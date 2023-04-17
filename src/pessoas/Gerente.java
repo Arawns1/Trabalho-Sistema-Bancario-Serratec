@@ -2,7 +2,7 @@ package pessoas;
 
 public class Gerente extends Funcionario {
 	
-	public void gerarRelatorioNumeroContas(); {
+	public void gerarRelatorioNumeroContas() {
 		
 	}
 

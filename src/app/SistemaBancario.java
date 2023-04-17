@@ -1,5 +1,6 @@
 package app;
 
+import banco.Agencia;
 import banco.Banco;
 import contas.Conta;
 import pessoas.funcionarios.Cargo;
@@ -18,6 +19,10 @@ public class SistemaBancario {
 		presidente.setTipo(Cargo.PRESIDENTE);
 		presidente.setSenha(234532);
 		System.out.println(Banco.getPresidente()); 
+		int numeroagencia = Banco.getNumeroAgencias();
+		System.out.println(numeroagencia);
+		Gerente G1 = new gerente
+		Agencia A1 = new Agencia(numeroagencia, presidente);
 		
 		
 	}

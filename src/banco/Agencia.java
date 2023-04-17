@@ -3,20 +3,28 @@ package banco;
 import java.util.ArrayList;
 import java.util.List;
 import contas.Conta;
+import pessoas.funcionarios.Gerente;
 
 public class Agencia {
 
 	private int numero;
-	//private Gerente gerente;
-	private List<Conta> contas = new ArrayList <Conta>();
-	
-	public void addNovaConta(Conta conta) {
-		
+	private Gerente gerente;
+	private List<Conta> contas = new ArrayList<Conta>();
+
+	public Agencia(int numero, Gerente gerente) {
+		super();
+		this.numero = numero;
+		this.gerente = gerente;
+
 	}
-	
-	/*public int getNumContas(Gerente gerente) {
-		
-	}*/
+
+	public void addNovaConta(Conta conta) {
+
+	}
+
+	public int getNumContas(Gerente gerente) {
+
+	}
 
 	public int getNumero() {
 		return numero;
@@ -26,13 +34,11 @@ public class Agencia {
 		this.numero = numero;
 	}
 
-	/*public Gerente getGerente() {
-		return gerente;
-	}
-
-	public void setGerente(Gerente gerente) {
-		this.gerente = gerente;
-	}*/
+	
+	 public Gerente getGerente() { return gerente; }
+	  
+	 public void setGerente(Gerente gerente) { this.gerente = gerente; }
+	 
 
 	public List<Conta> getContas() {
 		return contas;
@@ -46,6 +52,5 @@ public class Agencia {
 	public String toString() {
 		return "Agencia [numero=" + numero + ", contas=" + contas + "]";
 	}
-	
-	
+
 }

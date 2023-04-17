@@ -8,6 +8,16 @@ public abstract class Pessoa {
 	protected int senha;
 	protected Cargo tipo;
 
+	
+	
+	public Pessoa(String nome, String cpf, int senha, Cargo tipo) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.senha = senha;
+		this.tipo = tipo;
+	}
+
 	public String getNome() {
 		return this.nome;
 	}

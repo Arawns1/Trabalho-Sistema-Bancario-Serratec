@@ -12,8 +12,6 @@ public abstract class Funcionario extends Pessoa{
 		super(nome, cpf, senha, tipo);
 	}
 
-
-
 	public void addNovaConta() {}
 
 	@Override

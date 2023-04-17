@@ -50,7 +50,8 @@ public class Agencia {
 
 	@Override
 	public String toString() {
-		return "Agencia [numero=" + numero + ", contas=" + contas + "]";
+		return "Agencia [numero=" + numero + ", gerente=" + gerente + ", contas=" + contas + "]";
 	}
-
+	
+	
 }

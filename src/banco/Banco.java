@@ -16,7 +16,7 @@ public abstract class Banco {
 		return null;
 		
 	}
-	public static void addNovaAgencia(Pessoa presidente) {
+	public static void addNovaAgencia(Agencia agencia) {
 		
 	}
 	public static String getInfoClientes(Pessoa diretor) {

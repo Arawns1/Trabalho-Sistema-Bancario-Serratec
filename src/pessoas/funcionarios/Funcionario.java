@@ -1,4 +1,4 @@
-package pessoas;
+package pessoas.funcionarios;
 
 public abstract  class Funcionario {
 	private String nome;

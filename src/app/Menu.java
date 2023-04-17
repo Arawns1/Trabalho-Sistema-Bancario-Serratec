@@ -1,4 +1,4 @@
-package pessoas;
+package app;
 
 // descomentar quando forem criadas.
 

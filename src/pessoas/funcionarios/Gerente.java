@@ -1,4 +1,4 @@
-package pessoas;
+package pessoas.funcionarios;
 
 public class Gerente extends Funcionario {
 	

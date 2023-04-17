@@ -3,7 +3,7 @@ package banco;
 import java.util.HashMap;
 
 import pessoas.Pessoa;
-import pessoas.Presidente;
+import pessoas.funcionarios.Presidente;
 
 public abstract class Banco {
 	private static String nome;

@@ -1,9 +1,8 @@
 package pessoas;
 
 public enum Cargo {
- Cliente,
- Gerente,
- Diretor,
- Presidente 
- 
+	 CLIENTE,
+	 GERENTE,
+	 DIRETOR,
+	 PRESIDENTE 
 }

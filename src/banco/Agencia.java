@@ -41,7 +41,11 @@ public class Agencia {
 	public void setContas(List<Conta> contas) {
 		this.contas = contas;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Agencia [numero=" + numero + ", contas=" + contas + "]";
+	}
 	
 	
 }

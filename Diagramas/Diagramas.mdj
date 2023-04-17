@@ -22945,7 +22945,7 @@
 												"$ref": "AAAAAAGHimqXGqdHax8="
 											},
 											"name": "nome",
-											"visibility": "private",
+											"visibility": "protected",
 											"type": "String"
 										},
 										{
@@ -22955,7 +22955,7 @@
 												"$ref": "AAAAAAGHimqXGqdHax8="
 											},
 											"name": "CPF",
-											"visibility": "private",
+											"visibility": "protected",
 											"type": "String"
 										},
 										{
@@ -22965,7 +22965,7 @@
 												"$ref": "AAAAAAGHimqXGqdHax8="
 											},
 											"name": "senha",
-											"visibility": "private",
+											"visibility": "protected",
 											"type": "int"
 										},
 										{
@@ -22975,7 +22975,7 @@
 												"$ref": "AAAAAAGHimqXGqdHax8="
 											},
 											"name": "tipo",
-											"visibility": "private",
+											"visibility": "protected",
 											"type": {
 												"$ref": "AAAAAAGHh7iL8D0Hxfw="
 											}
@@ -26807,7 +26807,7 @@
 													"top": 611,
 													"width": 209.1806640625,
 													"height": 13,
-													"text": "-nome: String",
+													"text": "#nome: String",
 													"horizontalAlignment": 0
 												},
 												{
@@ -26824,7 +26824,7 @@
 													"top": 626,
 													"width": 209.1806640625,
 													"height": 13,
-													"text": "-CPF: String",
+													"text": "#CPF: String",
 													"horizontalAlignment": 0
 												},
 												{
@@ -26841,7 +26841,7 @@
 													"top": 641,
 													"width": 209.1806640625,
 													"height": 13,
-													"text": "-senha: int",
+													"text": "#senha: int",
 													"horizontalAlignment": 0
 												},
 												{
@@ -26858,7 +26858,7 @@
 													"top": 656,
 													"width": 209.1806640625,
 													"height": 13,
-													"text": "-tipo: Cargos",
+													"text": "#tipo: Cargos",
 													"horizontalAlignment": 0
 												}
 											],

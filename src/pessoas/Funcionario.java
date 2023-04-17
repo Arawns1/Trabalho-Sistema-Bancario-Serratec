@@ -16,6 +16,14 @@ public abstract  class Funcionario {
 		this.nome = nome;
 	}
 	
+	public String getCargo() {
+		return Cargo;
+	}
+
+	public void setCargo(String cargo) {
+		Cargo = cargo;
+	}
+
 	public String getCpf() {
 		return cpf;
 	}

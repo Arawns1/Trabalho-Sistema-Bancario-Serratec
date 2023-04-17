@@ -1,96 +1,128 @@
 
-	package contas;
+package contas;
 
-	import pessoas.Pessoa;
+import java.util.ArrayList;
+import java.util.List;
 
-	public abstract  class Conta {
-		
-		private int numero;
-		private Pessoa pessoa;
-		private double saldo;
-		private String  tipoConta;
-		private String transacao;
-		public int agencia;
-		public Conta(int numero, Pessoa pessoa, double saldo, String tipoConta, String transacao) {
-			this.numero = numero;
-			this.pessoa = pessoa;
-			this.saldo = saldo;
-			this.tipoConta = tipoConta;
-			this.transacao = transacao;
+import banco.Agencia;
+import banco.Operacao;
+import banco.TipoConta;
+import pessoas.Pessoa;
+
+public abstract class Conta {
+
+	protected int numero;
+	protected Pessoa titular;
+	protected double saldo;
+	protected TipoConta tipo;
+	protected Agencia agencia;
+	protected List<List<String>> transacoes = new ArrayList<>();
+
+
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public Pessoa getTitular() {
+		return titular;
+	}
+
+	public void setTitular(Pessoa titular) {
+		this.titular = titular;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public TipoConta getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoConta tipo) {
+		this.tipo = tipo;
+	}
+
+	public Agencia getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
+	}
+
+	public List<List<String>> getTransacoes() {
+		return transacoes;
+	}
+
+	public void setTransacoes(List<List<String>> transacoes) {
+		this.transacoes = transacoes;
+	}
+
+	protected void depositar(Double valor) {
+		if (valor > 0) {
+			this.saldo += valor;
+			System.out.println("Seu deposito foi realizado com sucesso");
+		} else {
+			System.out.println("Não foi possivel realizar o deposito");
 		}
-		public int getNumero() {
-			return numero;
+	}
+
+	protected void sacar(Double valor) {
+		if (valor > 0 && this.saldo >= valor) {
+			this.saldo -= valor;
+			System.out.println("Seu saque foi realizado com sucesso");
+
+		} else {
+			System.out.println("Não foi possivel realizar o saque");
 		}
-		public void setNumero(int numero) {
-			this.numero = numero;
+
+	}
+
+	protected void transferir(Conta contaDestino, double valor) {
+
+		if (verificarSaldo(valor)) {
+			System.out.println("Trasferência realizada com sucesso");
+			this.saldo -= valor;
+			contaDestino.saldo += valor;
+			System.out.println("Seu saldo é de: " + this.saldo);
+		} else {
+			System.out.println("Saldo insuficiente para realizar a operação");
 		}
-		public Pessoa getPessoa() {
-			return pessoa;
+	}
+
+	public double consultarSaldo() {
+
+		return this.saldo;
+
+	}
+
+	protected boolean verificarSaldo(double valor) {
+		if (this.saldo >= valor && valor > 0) {
+			return true;
+		} else {
+			return false;
 		}
-		public void setPessoa(Pessoa pessoa) {
-			this.pessoa = pessoa;
-		}
-		public double getSaldo() {
-			return saldo;
-		}
-		public void setSaldo(double saldo) {
-			this.saldo = saldo;
-		}
-		public String getTipoConta() {
-			return tipoConta;
-		}
-		public void setTipoConta(String tipoConta) {
-			this.tipoConta = tipoConta;
-		}
-		public String getTransacao() {
-			return transacao;
-		}
-		public void setTransacao(String transacao) {
-			this.transacao = transacao;
-		}
-		
-		
-		@Override
-		public String toString() {
-			return "Conta [numero=" + numero + ", pessoa=" + pessoa + ", saldo=" + saldo + ", tipoConta=" + tipoConta
-					+ ", transacao=" + transacao + ", agencia=" + agencia + "]";
-		}
-		
-		
-		
-		public void  depositar (Double valor) {
-			if (valor > 0) {
-				this.saldo +=valor;
-				System.out.println("Seu deposito foi realizado com sucesso");
-			}else {
-				System.out.println("Não foi possivel realizar o deposito");
-			}
-		}
-		
-		public void sacar (Double valor) {
-			if(valor >0 && this.saldo >= valor) {
-				this.saldo -=valor;
-				System.out.println("Seu saque foi realizado com sucesso");
-						
-			}else {
-				System.out.println("Não foi possivel realizar o saque");
-			}
-				
-		}
-	    public void transferir(Conta contaDestino, double valor) {
-			
-			if(this.saldo > valor && valor > 0) {
-				System.out.println("Trasferência realizada com sucesso");
-				this.saldo -=valor;
-				contaDestino.saldo += valor;
-				System.out.println("Seu saldo é de: " + this.saldo);
-			}else {
-				System.out.println("Saldo insuficiente para realizar a operação");
-			}
-			
-				
-		}
-		
-		
-		
+
+	}
+
+	protected void tirarExtrato() {
+
+		System.out.println(transacoes);
+
+	}
+
+	protected void addTransacao(Operacao tipo, double valor) {
+
+	}
+
 }

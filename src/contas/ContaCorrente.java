@@ -11,7 +11,7 @@ public class ContaCorrente {
 	public double totalTaxaTransferencia;
 	public double taxasTotais;
 	
-	//public void addTransaçao(EnumOperaçoes tipo, double valor) {
+	//public void addTransaï¿½ao(EnumOperaï¿½oes tipo, double valor) {
 		
 	//}
 

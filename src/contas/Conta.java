@@ -5,11 +5,11 @@
 
 	public abstract  class Conta {
 		
-		private int numero;
-		private Pessoa pessoa;
-		private double saldo;
-		private String  tipoConta;
-		private String transacao;
+		protected int numero;
+		protected Pessoa pessoa;
+		protected double saldo;
+		protected String  tipoConta;
+		protected String transacao;
 		public int agencia;
 		public Conta(int numero, Pessoa pessoa, double saldo, String tipoConta, String transacao) {
 			this.numero = numero;

@@ -1,12 +1,12 @@
 package pessoas;
 
-import pessoas.funcionarios.Cargos;
+import pessoas.funcionarios.Cargo;
 
 public abstract class Pessoa {
 	protected String nome;
 	protected String cpf;
 	protected int senha;
-	protected Cargos tipo;
+	protected Cargo tipo;
 
 	public String getNome() {
 		return this.nome;
@@ -32,11 +32,11 @@ public abstract class Pessoa {
 		this.senha = senha;
 	}
 
-	public Cargos getTipo() {
+	public Cargo getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(Cargos tipo) {
+	public void setTipo(Cargo tipo) {
 		this.tipo = tipo;
 	}
 

@@ -1,6 +1,6 @@
 package pessoas.funcionarios;
 
-public enum Cargos {
+public enum Cargo {
 	 CLIENTE,
 	 GERENTE,
 	 DIRETOR,

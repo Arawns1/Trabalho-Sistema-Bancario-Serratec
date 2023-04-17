@@ -3,8 +3,6 @@ package app;
 public class SistemaBancario {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

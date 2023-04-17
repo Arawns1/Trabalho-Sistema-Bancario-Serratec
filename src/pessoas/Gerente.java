@@ -1,10 +1,9 @@
 package pessoas;
-// comentei o public void para descomentar junto com as outras classes.
 
-public class Gerente extends Pessoa {
+public class Gerente extends Funcionario {
 	
-	//public void gerarRelatorioNumeroContas(); {
+	public void gerarRelatorioNumeroContas(); {
 		
 	}
 
-//}
+}

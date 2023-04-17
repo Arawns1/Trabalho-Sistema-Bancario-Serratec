@@ -40,9 +40,16 @@ public abstract class Pessoa {
 		this.tipo = tipo;
 	}
 
+	// public Cargos getTipo() {
+	// return this.tipo;
+	// }
+	// public void setCargos(Cargos tipo) {
+	// this.tipo = tipo;
+	// }
+
 	@Override
 	public String toString() {
-		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + ", tipo=" + tipo + "]";
+		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + "]";
 	}
-	
+
 }

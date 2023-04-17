@@ -1,6 +1,6 @@
 package banco;
 
-public enum Conta {
+public enum TipoConta {
 	CONTA_CORRENTE,
 	CONTA_POUPANCA
 

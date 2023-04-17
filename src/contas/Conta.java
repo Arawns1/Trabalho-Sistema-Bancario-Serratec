@@ -50,10 +50,13 @@
 		}
 		
 		
+		@Override
 		public String toString() {
-			return  " Numero da Conta =" + this.numero +" Numero da Agência=" + this.agencia + " titular="  this.pessoa.getNome(); " saldo=" + this.saldo +
-				    " tipo=" + this.tipoConta;
+			return "Conta [numero=" + numero + ", pessoa=" + pessoa + ", saldo=" + saldo + ", tipoConta=" + tipoConta
+					+ ", transacao=" + transacao + ", agencia=" + agencia + "]";
 		}
+		
+		
 		
 		public void  depositar (Double valor) {
 			if (valor > 0) {

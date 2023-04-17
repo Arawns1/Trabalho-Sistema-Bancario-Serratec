@@ -2,7 +2,6 @@ package contas;
 
 public class ContaCorrente {
 
-	//TODO COLOCAR VALORES
 	public static final double TAXA_SAQUE = 0.10;
 	public static final double TAXA_DEPOSITO = 0.10;
 	public static final double TAXA_TRANSFERENCIA = 0.20;

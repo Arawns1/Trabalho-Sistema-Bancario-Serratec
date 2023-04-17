@@ -1,6 +1,6 @@
 package contas;
 
-public class ContaCorrente {
+public class ContaCorrente extends Conta {
 
 	public static final double TAXA_SAQUE = 0.10;
 	public static final double TAXA_DEPOSITO = 0.10;

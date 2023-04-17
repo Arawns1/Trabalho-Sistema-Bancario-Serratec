@@ -10,8 +10,10 @@ import pessoas.funcionarios.Presidente;
 public class SistemaBancario {
 
 	public static void main(String[] args) {
-		//Atribuimos o nome do banco de Set Banco
+		
+		//Atribuimos o nome do banco com o Set Banco
 		Banco.setNome("G5 bank");
+		
 		//Escrever o nome do banco na tela
 		System.out.println(Banco.getNome());
 		
@@ -30,7 +32,8 @@ public class SistemaBancario {
 		 * presidente.setTipo(Cargo.PRESIDENTE); 
 		 * presidente.setSenha(234532);
 		 */
-		System.out.println(Banco.getPresidente()); 
+        
+		System.out.println("O presidente é " + Banco.getPresidente()); 
 		
 		int numeroagencia = Banco.getNumeroAgencias();
 		System.out.println(numeroagencia);

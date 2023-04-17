@@ -10,7 +10,7 @@ public abstract class Banco {
 	private static Presidente presidente;
 	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<Integer, Agencia>();
 	private static double saldoTotal;
-	private static int numeroAgencias;
+	private static int contadorAgencia = 0;
 	
 	public static Agencia getAgencia(int numAgencia) {
 		return null;
@@ -47,11 +47,11 @@ public abstract class Banco {
 	public static void setSaldoTotal(double saldoTotal) {
 		Banco.saldoTotal = saldoTotal;
 	}
-	public static int getNumeroAgencias() {
-		return numeroAgencias;
+	public static int getContadorAgencia() {
+		return contadorAgencia;
 	}
-	public static void setNumeroAgencias(int numeroAgencias) {
-		Banco.numeroAgencias = numeroAgencias;
+	public static void setContadorAgencia(int numeroAgencias) {
+		Banco.contadorAgencia = numeroAgencias;
 	}
 	@Override
 	public String toString() {

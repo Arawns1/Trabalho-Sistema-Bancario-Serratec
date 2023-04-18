@@ -11,7 +11,7 @@ public abstract class Banco {
 
 	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<Integer, Agencia>();
 	private static double saldoTotal;
-	private static int contadorAgencia = 0;
+	private static int contadorAgencia = 1;
 	
 	public static Agencia getAgencia(int numAgencia) {
 		return null;

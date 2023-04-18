@@ -17,6 +17,10 @@ public abstract class Banco {
 		
 	}
 	public static void addNovaAgencia(Agencia agencia) {
+		//[chave:valor]
+		contadorAgencia ++;
+		listaAgencias.put(agencia.getNumero(),agencia);
+
 		
 	}
 	public static String getInfoClientes(Pessoa diretor) {

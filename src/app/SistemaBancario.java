@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Iterator;
+
 import banco.Agencia;
 import banco.Banco;
 import contas.Conta;
@@ -32,17 +34,36 @@ public class SistemaBancario {
 		 * presidente.setTipo(Cargo.PRESIDENTE); 
 		 * presidente.setSenha(234532);
 		 */
-        
+      
 		System.out.println("O presidente é " + Banco.getPresidente()); 
 		
-		int numeroagencia = Banco.getNumeroAgencias();
-		System.out.println(numeroagencia);
+		//A variavel numeroagencia recebeu o número que retorna da funcão Banco.getNumeroAgencias();
+		int numeroagencia = Banco.getContadorAgencia(); //0
+		
+		System.out.println("O contador agencia é: " + numeroagencia);
+		
 		Gerente G1 = new Gerente("Mariane", "12345678910", 12345, Cargo.GERENTE, numeroagencia);
 		System.out.println(G1);
 		
 		Agencia A1 = new Agencia(numeroagencia, G1);
 		Banco.addNovaAgencia(A1);
-		System.out.println(A1);
+		
+		//CRIANDO UMA NOVA AGENCIA
+		for (int i = 0; i < 3; i++) {
+			Gerente G2 = new Gerente("Bruna", "10545698712", 678901, Cargo.GERENTE, numeroagencia);
+			System.out.println("O contador agencia é: " + numeroagencia);
+			Agencia A2 = new Agencia(Banco.getContadorAgencia(), G2);
+			Banco.addNovaAgencia(A2);
+		}
+			
+			
+	
+		
+		System.out.println("Lista de Agencias: ");
+		System.out.println(Banco.getListaAgencias());
+		System.out.println("O número de agencias é: ");
+		System.out.println(Banco.getListaAgencias().size());
+
 		
 	}
 

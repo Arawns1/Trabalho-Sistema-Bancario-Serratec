@@ -41,23 +41,13 @@ public class SistemaBancario {
 		System.out.println("O presidente é " + Banco.getPresidente()); 
 		
 	//------------------------------//
-	//			CRIANDO UM AGENCIA			//
+	//	  CRIANDO UM AGENCIA	    //
 	//------------------------------//
 
 	//Para criarmos uma nova agencia precisamos instanciá-la através de:
 	// Agencia nomeDaAgencia = new Agencia(numeroDaAgencia, GerenteDaAgencia);
 	// Então antes de criarmos de fato uma agencia, precisamos definir qual será o número dela
 	// E quem será o gerente dele.
-
-	//Criando um gerente
-	//O construtor de Gerente não é o mesmo de Presidente
-	//Construtor do presidente: (nome, CPF, senha, cargo)
-	//Mas por que?
-	//Porque Gerente precisa ter uma agencia especifica em que ele é resposável
-	//Já o presidente não precisa, visto que ele comanda todas as agencias.
-	//Construtor de Gerente: Gerente(nome, cpf, senha, Cargo, numeroDaAgencia)
-		Gerente G1 = new Gerente("Mariane", "12345678910", 12345, Cargo.GERENTE, numeroagencia);
-		System.out.println(G1);
 
 	//Agora vamos dar um número para a agencia
 	//Nossa classe Banco conta com um atributo chamado ContadorAgencia
@@ -68,6 +58,17 @@ public class SistemaBancario {
 	//A variavel numeroagencia irá receber o número do contador atual
 		int numeroagencia = Banco.getContadorAgencia();
 		
+		
+		//Criando um gerente
+		//O construtor de Gerente não é o mesmo de Presidente
+		//Construtor do presidente: (nome, CPF, senha, cargo)
+		//Mas por que?
+		//Porque Gerente precisa ter uma agencia especifica em que ele é resposável
+		//Já o presidente não precisa, visto que ele comanda todas as agencias.
+		//Construtor de Gerente: Gerente(nome, cpf, senha, Cargo, numeroDaAgencia)
+			Gerente G1 = new Gerente("Mariane", "12345678910", 12345, Cargo.GERENTE, numeroagencia);
+			System.out.println(G1);
+			
 	//Testando qual número a variavel numeroagencia pegou;
 		System.out.println("O contador agencia é: " + numeroagencia);
 		
@@ -108,8 +109,8 @@ public class SistemaBancario {
 		//a variável.
 			Gerente G3 = new Gerente("Larissa", "1242123213", 13212, Cargo.GERENTE, Banco.getContadorAgencia());
 			System.out.println("O contador agencia é: " + Banco.getContadorAgencia());
-			Agencia A3 = new Agencia(Banco.getContadorAgencia(), G2);
-			Banco.addNovaAgencia(A2);
+			Agencia A3 = new Agencia(Banco.getContadorAgencia(), G3);
+			Banco.addNovaAgencia(A3);
 
 		//Por fim, imagine que nosso banco cresceu e temos diversas agencias criadas por petrópolis
 		//Como saberei a quantidade de agencias que tenho cadastradas?
@@ -122,7 +123,12 @@ public class SistemaBancario {
 		// Dessa forma podemos saber quantas agencias temos
 		System.out.println("O número de agencias é: ");
 		System.out.println(Banco.getListaAgencias().size());
-
+		
+		//---------------------------//
+		//		CRIANDO UMA CONTA 	 //
+		//---------------------------//
+		
+		
 		
 	}
 

@@ -1,5 +1,9 @@
 package contas;
 
+import banco.Agencia;
+import banco.TipoConta;
+import pessoas.Pessoa;
+
 public class ContaCorrente extends Conta {
 
 	public static final double TAXA_SAQUE = 0.10;
@@ -14,6 +18,11 @@ public class ContaCorrente extends Conta {
 	//public void addTransa�ao(EnumOpera�oes tipo, double valor) {
 		
 	//}
+
+	public ContaCorrente(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {
+		super(numero, titular, saldo, tipo, agencia);
+		
+	}
 
 	public void TirarRelatorioTaxa() {
 	}

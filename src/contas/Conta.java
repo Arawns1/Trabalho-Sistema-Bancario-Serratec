@@ -18,7 +18,17 @@ public abstract class Conta {
 	protected Agencia agencia;
 	protected List<List<String>> transacoes = new ArrayList<>();
 
+	
 
+
+	public Conta(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {
+		super();
+		this.numero = numero;
+		this.titular = titular;
+		this.saldo = saldo;
+		this.tipo = tipo;
+		this.agencia = agencia;
+	}
 
 	public int getNumero() {
 		return numero;

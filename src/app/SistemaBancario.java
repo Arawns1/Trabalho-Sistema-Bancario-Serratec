@@ -4,7 +4,11 @@ import java.util.Iterator;
 
 import banco.Agencia;
 import banco.Banco;
+import banco.TipoConta;
 import contas.Conta;
+import contas.ContaCorrente;
+import pessoas.Cliente;
+import pessoas.Pessoa;
 import pessoas.funcionarios.Cargo;
 import pessoas.funcionarios.Gerente;
 import pessoas.funcionarios.Presidente;
@@ -127,7 +131,9 @@ public class SistemaBancario {
 		//---------------------------//
 		//		CRIANDO UMA CONTA 	 //
 		//---------------------------//
-		
+		Pessoa pessoa = new Cliente("Joice", "12345678910", 123456, Cargo.CLIENTE);
+		Conta conta = new ContaCorrente(1234, pessoa, 100.50, TipoConta.CONTA_CORRENTE, A3);
+		A3.addNovaConta(conta);
 		
 		
 	}

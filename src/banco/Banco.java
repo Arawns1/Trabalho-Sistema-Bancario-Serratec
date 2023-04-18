@@ -8,6 +8,7 @@ import pessoas.funcionarios.Presidente;
 public abstract class Banco {
 	private static String nome;
 	private static Presidente presidente;
+
 	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<Integer, Agencia>();
 	private static double saldoTotal;
 	private static int contadorAgencia = 0;
@@ -17,10 +18,26 @@ public abstract class Banco {
 		
 	}
 	public static void addNovaAgencia(Agencia agencia) {
-		//[chave:valor]
-		contadorAgencia ++;
+		//Em nossa classe principal (Sistema Bancario), criamos uma agencia e
+		//agora queremos vinculá-la ao banco.
+		//Como faremos isso?
+		//Vamos adicionar essa agencia a uma lista de agencias que o banco administra
+		//Nossa lista se chama listaAgencias.
+		//Porém para dar mais dinamismo ao nosso sistema utilizaremos o HashMap pensando em utilizações futuras.
+		//O HashMap é uma conjunto de [chaves:valor] que quando passamos a chave ele automaticamente retorna
+		//o valor dela.
+
+		//Em nosso HashMap listaAgencia, precisamos passar uma chave do tipo Integer e um valor do tipo Agencia
+		//Ou seja, quando formos adicionar uma nova agencia a essa lista iremos informar o número dela como
+		//chave e ela mesmo como valor.
+
+		//Para adicionar ao map usamos o método .put()
 		listaAgencias.put(agencia.getNumero(),agencia);
 
+		//Por fim, ao adicionarmos uma nova agencia ao nosso banco, aumentaremos o contador de agencias
+		contadorAgencia ++;
+
+		//Volte para o Sistema Bancário, linha 86.
 		
 	}
 	public static String getInfoClientes(Pessoa diretor) {

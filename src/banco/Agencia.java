@@ -36,17 +36,16 @@ public class Agencia {
 		this.numero = numero;
 	}
 
-	
-	 public Gerente getGerente() { return gerente; }
-	  
-	 public void setGerente(Gerente gerente) { this.gerente = gerente; }
-	 
+	public Gerente getGerente() {
+		return gerente;
+	}
 
-	public void getContas() {
-		for (int i = 0; i < contas.size(); i++) {
-			System.out.println (contas.get(i));
-		}
-		
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
+	}
+
+	public List<Conta> getContas() {
+		return contas;
 	}
 
 	public void setContas(List<Conta> contas) {
@@ -57,6 +56,5 @@ public class Agencia {
 	public String toString() {
 		return "Agencia [numero=" + numero + ", gerente=" + gerente + ", contas=" + contas + "]";
 	}
-	
-	
+
 }

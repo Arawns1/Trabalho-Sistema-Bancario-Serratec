@@ -137,8 +137,11 @@ public abstract class Conta {
 
 	@Override
 	public String toString() {
-		return "Conta [numero=" + numero + ", saldo=" + saldo + ", tipo=" + tipo + "]";
+		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + ", agencia="
+				+ agencia.getNumero() + "]";
 	}
+
+
 
 	
 	}

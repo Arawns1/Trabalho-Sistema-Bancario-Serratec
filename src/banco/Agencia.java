@@ -19,10 +19,12 @@ public class Agencia {
 	}
 
 	public void addNovaConta(Conta conta) {
+		contas.add(conta);
 
 	}
 
 	public int getNumContas(Gerente gerente) {
+		return contas.size();
 
 	}
 
@@ -40,8 +42,11 @@ public class Agencia {
 	 public void setGerente(Gerente gerente) { this.gerente = gerente; }
 	 
 
-	public List<Conta> getContas() {
-		return contas;
+	public void getContas() {
+		for (int i = 0; i < contas.size(); i++) {
+			System.out.println (contas.get(i));
+		}
+		
 	}
 
 	public void setContas(List<Conta> contas) {

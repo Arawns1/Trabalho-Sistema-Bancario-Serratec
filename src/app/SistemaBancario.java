@@ -134,7 +134,8 @@ public class SistemaBancario {
 		Pessoa pessoa = new Cliente("Joice", "12345678910", 123456, Cargo.CLIENTE);
 		Conta conta = new ContaCorrente(1234, pessoa, 100.50, TipoConta.CONTA_CORRENTE, A3);
 		A3.addNovaConta(conta);
-		
+	    A3.getContas();
+		System.out.println(A3.getNumContas(G3));
 		
 	}
 

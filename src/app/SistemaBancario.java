@@ -8,6 +8,7 @@ import banco.Operacao;
 import banco.TipoConta;
 import contas.Conta;
 import contas.ContaCorrente;
+import contas.ContaPoupanca;
 import pessoas.Cliente;
 import pessoas.Pessoa;
 import pessoas.funcionarios.Cargo;
@@ -174,6 +175,9 @@ public class SistemaBancario {
 		
 		conta.TirarRelatorioTaxa();
 		conta.tirarExtrato();
+		
+		ContaPoupanca cp = new ContaPoupanca(7656, pessoa2, 33, TipoConta.CONTA_POUPANCA, A3);
+			cp.simularRendimento(2000, 3);
 	}
 
 }

@@ -171,6 +171,7 @@ public class SistemaBancario {
 		System.out.println("O saldo da " + conta2.getTitular().getNome() + " é: " + conta2.getSaldo());
 		
 		System.out.println(conta.getTransacoes());
+		
 	}
 
 }

@@ -46,6 +46,8 @@ public class ContaCorrente extends Conta {
 		if (valor > 0) {
 			momentoOperacao = LocalDateTime.now();
 			this.saldo += valor;
+			this.saldo -= TAXA_DEPOSITO;
+			totalTaxaDeposito += TAXA_DEPOSITO;
 			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
 			System.out.println("Seu deposito foi realizado com sucesso");
 		} else {

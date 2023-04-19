@@ -71,11 +71,11 @@ public abstract class Conta {
 		this.agencia = agencia;
 	}
 
-	public List<List<String>> getTransacoes() {
+	public List<String>  getTransacoes() {
 		return transacoes;
 	}
 
-	public void setTransacoes(List<List<String>> transacoes) {
+	public void setTransacoes(List<String> transacoes) {
 		this.transacoes = transacoes;
 	}
 
@@ -83,7 +83,7 @@ public abstract class Conta {
 		if (valor > 0) {
 			momentoOperacao = LocalDateTime.now();
 			this.saldo += valor;
-			transacoes.add(momento.format(dtf) + " Depositou R$" + valor);
+			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
 			System.out.println("Seu deposito foi realizado com sucesso");
 		} else {
 			System.out.println("Não foi possivel realizar o deposito");
@@ -108,7 +108,7 @@ public abstract class Conta {
 		if (verificarSaldo(valor)){
 			momentoOperacao = LocalDateTime.now();
 			this.saldo -= valor;
-			transacoes.add(momento.format(dtf) + " Transferiu R$" + valor);
+			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
 			System.out.println("Trasferência realizada com sucesso");
 			contaDestino.saldo += valor;
 		

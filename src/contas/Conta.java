@@ -18,8 +18,9 @@ public abstract class Conta {
 	protected double saldo;
 	protected TipoConta tipo;
 	protected Agencia agencia;
-	protected List<List<String>> transacoes = new ArrayList<>();
-
+	protected List<String> transacoes = new ArrayList<>();
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
+	LocalDateTime momentoOperacao;
 
 	public Conta(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {
 		super();
@@ -80,8 +81,9 @@ public abstract class Conta {
 
 	public void depositar(Double valor) {
 		if (valor > 0) {
-			addTransacao(Operacao.DEPOSITAR, valor);
+			momentoOperacao = LocalDateTime.now();
 			this.saldo += valor;
+			transacoes.add(momento.format(dtf) + " Depositou R$" + valor);
 			System.out.println("Seu deposito foi realizado com sucesso");
 		} else {
 			System.out.println("Não foi possivel realizar o deposito");
@@ -91,7 +93,8 @@ public abstract class Conta {
 	public void sacar(Double valor) {
 		if (valor > 0 && this.saldo >= valor) {
 			this.saldo -= valor;
-			addTransacao(Operacao.SACAR, valor);
+			momentoOperacao = LocalDateTime.now();
+			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
 			System.out.println("Seu saque foi realizado com sucesso");
 
 		} else {
@@ -103,9 +106,10 @@ public abstract class Conta {
 	public void transferir(Conta contaDestino, double valor) {
 
 		if (verificarSaldo(valor)){
-			addTransacao(Operacao.TRANSFERIR, valor);
-			System.out.println("Trasferência realizada com sucesso");
+			momentoOperacao = LocalDateTime.now();
 			this.saldo -= valor;
+			transacoes.add(momento.format(dtf) + " Transferiu R$" + valor);
+			System.out.println("Trasferência realizada com sucesso");
 			contaDestino.saldo += valor;
 		
 		} else {
@@ -128,40 +132,12 @@ public abstract class Conta {
 
 	}
 
-	private void addTransacao(Operacao tipo, double valor) {
-		List<String>transacao = new ArrayList<>();
-		LocalDateTime momento = LocalDateTime.now();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
-		switch(tipo) {
-		case SACAR:
-			transacao.add(momento.format(dtf) + " Sacou R$" + valor);
-			transacoes.add(transacao);
-			break;
-		case DEPOSITAR:
-			transacao.add(momento.format(dtf) + " Depositou R$" + valor);
-			transacoes.add(transacao);
-			break;
-		case TRANSFERIR:
-			transacao.add(momento.format(dtf) + " Transferiu R$" + valor);
-			transacoes.add(transacao);
-			break;
-		default: 
-			break;
-		}
-		
-	}
-
 	@Override
 	public String toString() {
 		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + ", agencia="
 				+ agencia + "]";
 	}
 
-	
-
-
-
-	
 	}
 	
 

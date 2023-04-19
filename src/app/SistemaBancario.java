@@ -143,7 +143,7 @@ public class SistemaBancario {
 		//Fizemos assim pois será importante no futuro.
 		Pessoa pessoa = new Cliente("Joice", "12345678910", 123456, Cargo.CLIENTE);
 
-		Conta conta = new ContaCorrente(1234, pessoa, 100.50, TipoConta.CONTA_CORRENTE, A3);
+		ContaCorrente conta = new ContaCorrente(1234, pessoa, 100.50, TipoConta.CONTA_CORRENTE, A3);
 
 		//Após abrirmos uma nova conta, precisamos adicioná-la na agencia e o método addNovaConta faz
 		//exatamente isso
@@ -158,7 +158,7 @@ public class SistemaBancario {
 		System.out.println(A3.getNumContas(G3));
 		
 		//Testando métodos de conta
-		conta.sacar(500.00);
+		conta.sacar(100.00);
 		conta.depositar(1000.0);
 
 		//Criando uma nova conta para realizar a transferencia
@@ -167,11 +167,12 @@ public class SistemaBancario {
 
 		conta.transferir(conta2, 100.0);
 
-		System.out.println("O saldo da " + conta.getTitular().getNome() + " é: " + conta.getSaldo());
+		System.out.println("O saldo da " + conta.getTitular().getNome() + " é: " + String.format("%.2f", conta.getSaldo()));
 		System.out.println("O saldo da " + conta2.getTitular().getNome() + " é: " + conta2.getSaldo());
 		
 		System.out.println(conta.getTransacoes());
 		
+		conta.TirarRelatorioTaxa();
 	}
 
 }

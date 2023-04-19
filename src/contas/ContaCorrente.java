@@ -15,7 +15,6 @@ public class ContaCorrente extends Conta {
 	public double totalTaxaSaque;
 	public double totalTaxaDeposito;
 	public double totalTaxaTransferencia;
-	public double taxasTotais;
 
 
 
@@ -76,6 +75,10 @@ public class ContaCorrente extends Conta {
 
 
 	public void TirarRelatorioTaxa() {
+		System.out.println("Total gasto com Taxas de saque: R$" + this.totalTaxaSaque);
+		System.out.println("Total gasto com Taxas de depósito: R$" + this.totalTaxaDeposito);
+		System.out.println("Total gasto com Taxas de transferência: R$" + this.totalTaxaTransferencia);
+		System.out.println("O somatório total das Taxas de saque: R$" + (this.totalTaxaSaque + this.totalTaxaDeposito + this.totalTaxaTransferencia));
 
 	}
 

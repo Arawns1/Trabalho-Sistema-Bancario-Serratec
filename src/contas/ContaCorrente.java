@@ -17,9 +17,7 @@ public class ContaCorrente extends Conta {
 	public double totalTaxaTransferencia;
 	public double taxasTotais;
 
-	// public void addTransacao(EnumOperacoes tipo, double valor) {
 
-	// }
 
 	public ContaCorrente(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {
 		super(numero, titular, saldo, tipo, agencia);
@@ -57,8 +55,9 @@ public class ContaCorrente extends Conta {
 	
 	@Override
 	public void sacar(Double valor) {
-		if (valor > 0 && this.saldo >= valor) {
-			this.saldo -= valor;
+		if (valor > 0 && this.saldo >= valor + TAXA_SAQUE) {
+			this.saldo -= valor + TAXA_SAQUE;
+			totalTaxaSaque +=TAXA_SAQUE;
 			momentoOperacao = LocalDateTime.now();
 			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
 			System.out.println("Seu saque foi realizado com sucesso");

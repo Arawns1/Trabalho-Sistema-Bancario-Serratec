@@ -31,6 +31,57 @@ public abstract class Conta {
 		this.agencia = agencia;
 	}
 
+		public void sacar(Double valor) {
+		if (valor > 0 && this.saldo >= valor) {
+			this.saldo -= valor;
+			momentoOperacao = LocalDateTime.now();
+			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
+			System.out.println("Seu saque foi realizado com sucesso");
+
+		} else {
+			System.out.println("Não foi possivel realizar o saque");
+		}
+	}
+
+	public void depositar(Double valor) {
+		if (valor > 0) {
+			momentoOperacao = LocalDateTime.now();
+			this.saldo += valor;
+			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
+			System.out.println("Seu deposito foi realizado com sucesso");
+		} else {
+			System.out.println("Não foi possivel realizar o deposito");
+		}
+	}
+
+	public void transferir(Conta contaDestino, double valor) {
+		if (verificarSaldo(valor)){
+			momentoOperacao = LocalDateTime.now();
+			this.saldo -= valor;
+			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
+			System.out.println("Trasferência realizada com sucesso");
+			contaDestino.saldo += valor;
+		
+		} else {
+			System.out.println("Saldo insuficiente para realizar a operação");
+		}
+	}
+
+
+	protected boolean verificarSaldo(double valor) {
+		if (this.saldo >= valor && valor > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	protected void tirarExtrato() {
+		System.out.println(transacoes);
+
+	}
+
 	public int getNumero() {
 		return numero;
 	}
@@ -77,59 +128,6 @@ public abstract class Conta {
 
 	public void setTransacoes(List<String> transacoes) {
 		this.transacoes = transacoes;
-	}
-
-	public void depositar(Double valor) {
-		if (valor > 0) {
-			momentoOperacao = LocalDateTime.now();
-			this.saldo += valor;
-			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
-			System.out.println("Seu deposito foi realizado com sucesso");
-		} else {
-			System.out.println("Não foi possivel realizar o deposito");
-		}
-	}
-
-	public void sacar(Double valor) {
-		if (valor > 0 && this.saldo >= valor) {
-			this.saldo -= valor;
-			momentoOperacao = LocalDateTime.now();
-			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
-			System.out.println("Seu saque foi realizado com sucesso");
-
-		} else {
-			System.out.println("Não foi possivel realizar o saque");
-		}
-
-	}
-
-	public void transferir(Conta contaDestino, double valor) {
-
-		if (verificarSaldo(valor)){
-			momentoOperacao = LocalDateTime.now();
-			this.saldo -= valor;
-			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
-			System.out.println("Trasferência realizada com sucesso");
-			contaDestino.saldo += valor;
-		
-		} else {
-			System.out.println("Saldo insuficiente para realizar a operação");
-		}
-	}
-
-
-	protected boolean verificarSaldo(double valor) {
-		if (this.saldo >= valor && valor > 0) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
-
-	protected void tirarExtrato() {
-		System.out.println(transacoes);
-
 	}
 
 	@Override

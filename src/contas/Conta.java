@@ -78,7 +78,7 @@ public abstract class Conta {
 		this.transacoes = transacoes;
 	}
 
-	protected void depositar(Double valor) {
+	public void depositar(Double valor) {
 		if (valor > 0) {
 			this.saldo += valor;
 			System.out.println("Seu deposito foi realizado com sucesso");
@@ -87,7 +87,7 @@ public abstract class Conta {
 		}
 	}
 
-	protected void sacar(Double valor) {
+	public void sacar(Double valor) {
 		if (valor > 0 && this.saldo >= valor) {
 			this.saldo -= valor;
 			System.out.println("Seu saque foi realizado com sucesso");
@@ -98,23 +98,18 @@ public abstract class Conta {
 
 	}
 
-	protected void transferir(Conta contaDestino, double valor) {
+	public void transferir(Conta contaDestino, double valor) {
 
 		if (verificarSaldo(valor)) {
 			System.out.println("Trasferência realizada com sucesso");
 			this.saldo -= valor;
 			contaDestino.saldo += valor;
-			System.out.println("Seu saldo é de: " + this.saldo);
+		
 		} else {
 			System.out.println("Saldo insuficiente para realizar a operação");
 		}
 	}
 
-	public double consultarSaldo() {
-
-		return this.saldo;
-
-	}
 
 	protected boolean verificarSaldo(double valor) {
 		if (this.saldo >= valor && valor > 0) {
@@ -138,8 +133,10 @@ public abstract class Conta {
 	@Override
 	public String toString() {
 		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + ", agencia="
-				+ agencia.getNumero() + "]";
+				+ agencia + "]";
 	}
+
+	
 
 
 

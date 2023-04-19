@@ -27,6 +27,12 @@ public class ContaCorrente extends Conta {
 	public void TirarRelatorioTaxa() {
 
 	}
+
+	@Override
+	public String toString() {
+		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo
+				+ ", agencia=" + agencia + "]";
+	}
 	
 	
 }

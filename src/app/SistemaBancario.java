@@ -136,7 +136,13 @@ public class SistemaBancario {
 		A3.addNovaConta(conta);
 	    System.out.println(A3.getContas());
 		System.out.println(A3.getNumContas(G3));
-		
+		conta.sacar(500.00);
+		conta.depositar(1000.0);
+		Pessoa pessoa2 = new Cliente("Maria", "12345678910", 123456, Cargo.CLIENTE);
+		Conta conta2 = new ContaCorrente(1234, pessoa2, 1000.50, TipoConta.CONTA_CORRENTE, A1);
+		conta.transferir(conta2, 100.0);
+		System.out.println("O saldo da " + conta.getTitular().getNome() + " é: " + conta.getSaldo());
+		System.out.println("O saldo da " + conta2.getTitular().getNome() + " é: " + conta2.getSaldo());
 	}
 
 }

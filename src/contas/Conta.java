@@ -55,7 +55,7 @@ public abstract class Conta {
 	}
 
 	public void transferir(Conta contaDestino, double valor) {
-		if (verificarSaldo(valor)){
+		if (valor > 0 && this.saldo >= valor){
 			momentoOperacao = LocalDateTime.now();
 			this.saldo -= valor;
 			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
@@ -65,16 +65,6 @@ public abstract class Conta {
 		} else {
 			System.out.println("Saldo insuficiente para realizar a operação");
 		}
-	}
-
-
-	protected boolean verificarSaldo(double valor) {
-		if (this.saldo >= valor && valor > 0) {
-			return true;
-		} else {
-			return false;
-		}
-
 	}
 
 	protected void tirarExtrato() {

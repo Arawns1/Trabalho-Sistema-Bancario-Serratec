@@ -1,5 +1,7 @@
 package contas;
 
+import java.time.LocalDateTime;
+
 import banco.Agencia;
 import banco.TipoConta;
 import pessoas.Pessoa;
@@ -15,7 +17,7 @@ public class ContaCorrente extends Conta {
 	public double totalTaxaTransferencia;
 	public double taxasTotais;
 
-	// public void addTransa�ao(EnumOpera�oes tipo, double valor) {
+	// public void addTransacao(EnumOperacoes tipo, double valor) {
 
 	// }
 
@@ -23,6 +25,54 @@ public class ContaCorrente extends Conta {
 		super(numero, titular, saldo, tipo, agencia);
 
 	}
+	
+	@Override
+	public void transferir(Conta contaDestino, double valor) {
+		if (valor > 0 && this.saldo >= valor + TAXA_TRANSFERENCIA){
+			momentoOperacao = LocalDateTime.now();
+			this.saldo -= valor + TAXA_TRANSFERENCIA;
+			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
+			totalTaxaTransferencia += TAXA_TRANSFERENCIA;
+			System.out.println("Trasferência realizada com sucesso");
+			contaDestino.saldo += valor;
+		} else {
+			System.out.println("Saldo insuficiente para realizar a operação");
+		}
+		
+	}
+	
+	@Override
+	public void depositar(Double valor) {
+		if (valor > 0) {
+			momentoOperacao = LocalDateTime.now();
+			this.saldo += valor;
+			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
+			System.out.println("Seu deposito foi realizado com sucesso");
+		} else {
+			System.out.println("Não foi possivel realizar o deposito");
+		}
+	}
+	
+	@Override
+	public void sacar(Double valor) {
+		if (valor > 0 && this.saldo >= valor) {
+			this.saldo -= valor;
+			momentoOperacao = LocalDateTime.now();
+			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
+			System.out.println("Seu saque foi realizado com sucesso");
+
+		} else {
+			System.out.println("Não foi possivel realizar o saque");
+		}
+	}
+
+
+	@Override
+	protected void tirarExtrato() {
+		// TODO Auto-generated method stub
+		super.tirarExtrato();
+	}
+
 
 	public void TirarRelatorioTaxa() {
 

@@ -1,6 +1,8 @@
 
 package contas;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +19,6 @@ public abstract class Conta {
 	protected TipoConta tipo;
 	protected Agencia agencia;
 	protected List<List<String>> transacoes = new ArrayList<>();
-
-	
 
 
 	public Conta(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {
@@ -80,6 +80,7 @@ public abstract class Conta {
 
 	public void depositar(Double valor) {
 		if (valor > 0) {
+			addTransacao(Operacao.DEPOSITAR, valor);
 			this.saldo += valor;
 			System.out.println("Seu deposito foi realizado com sucesso");
 		} else {
@@ -90,6 +91,7 @@ public abstract class Conta {
 	public void sacar(Double valor) {
 		if (valor > 0 && this.saldo >= valor) {
 			this.saldo -= valor;
+			addTransacao(Operacao.SACAR, valor);
 			System.out.println("Seu saque foi realizado com sucesso");
 
 		} else {
@@ -100,7 +102,8 @@ public abstract class Conta {
 
 	public void transferir(Conta contaDestino, double valor) {
 
-		if (verificarSaldo(valor)) {
+		if (verificarSaldo(valor)){
+			addTransacao(Operacao.TRANSFERIR, valor);
 			System.out.println("Trasferência realizada com sucesso");
 			this.saldo -= valor;
 			contaDestino.saldo += valor;
@@ -121,13 +124,31 @@ public abstract class Conta {
 	}
 
 	protected void tirarExtrato() {
-
 		System.out.println(transacoes);
 
 	}
 
-	protected void addTransacao(Operacao tipo, double valor) {
-
+	private void addTransacao(Operacao tipo, double valor) {
+		List<String>transacao = new ArrayList<>();
+		LocalDateTime momento = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
+		switch(tipo) {
+		case SACAR:
+			transacao.add(momento.format(dtf) + " Sacou R$" + valor);
+			transacoes.add(transacao);
+			break;
+		case DEPOSITAR:
+			transacao.add(momento.format(dtf) + " Depositou R$" + valor);
+			transacoes.add(transacao);
+			break;
+		case TRANSFERIR:
+			transacao.add(momento.format(dtf) + " Transferiu R$" + valor);
+			transacoes.add(transacao);
+			break;
+		default: 
+			break;
+		}
+		
 	}
 
 	@Override

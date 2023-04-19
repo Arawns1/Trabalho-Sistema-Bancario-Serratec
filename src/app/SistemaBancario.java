@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import banco.Agencia;
 import banco.Banco;
+import banco.Operacao;
 import banco.TipoConta;
 import contas.Conta;
 import contas.ContaCorrente;
@@ -143,6 +144,8 @@ public class SistemaBancario {
 		conta.transferir(conta2, 100.0);
 		System.out.println("O saldo da " + conta.getTitular().getNome() + " é: " + conta.getSaldo());
 		System.out.println("O saldo da " + conta2.getTitular().getNome() + " é: " + conta2.getSaldo());
+		
+		System.out.println(conta.getTransacoes());
 	}
 
 }

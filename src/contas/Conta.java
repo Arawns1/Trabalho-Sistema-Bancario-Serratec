@@ -53,7 +53,7 @@ public abstract class Conta {
 			System.out.println("Não foi possivel realizar o deposito");
 		}
 	}
-
+	
 	public void transferir(Conta contaDestino, double valor) {
 		if (valor > 0 && this.saldo >= valor){
 			momentoOperacao = LocalDateTime.now();
@@ -67,9 +67,19 @@ public abstract class Conta {
 		}
 	}
 
-	protected void tirarExtrato() {
-		System.out.println(transacoes);
-
+	public void tirarExtrato() {
+		System.out.println("--------------- EXTRATO ----------------");
+		System.out.println();
+		System.out.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
+		System.out.println("Gerado em: " + LocalDateTime.now().format(dtf));
+		System.out.println();
+		System.out.println("\tHORA\t  |  OPERAÇÃO  |  VALOR");
+		System.out.println("-".repeat(40));
+		for (int i = 0; i < transacoes.size(); i++) {
+			System.out.println(transacoes.get(i));
+		}
+		System.out.println("-".repeat(40));
+		System.out.println(" ".repeat(19)+" Saldo Final: R$" + String.format("%.2f", this.saldo));
 	}
 
 	public int getNumero() {

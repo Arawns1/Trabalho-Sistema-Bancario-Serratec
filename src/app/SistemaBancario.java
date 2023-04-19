@@ -173,6 +173,7 @@ public class SistemaBancario {
 		System.out.println(conta.getTransacoes());
 		
 		conta.TirarRelatorioTaxa();
+		conta.tirarExtrato();
 	}
 
 }

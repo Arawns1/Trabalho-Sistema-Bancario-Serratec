@@ -67,12 +67,6 @@ public class ContaCorrente extends Conta {
 	}
 
 
-	@Override
-	protected void tirarExtrato() {
-		// TODO Auto-generated method stub
-		super.tirarExtrato();
-	}
-
 
 	public void TirarRelatorioTaxa() {
 		System.out.println("Total gasto com Taxas de saque: R$" + this.totalTaxaSaque);

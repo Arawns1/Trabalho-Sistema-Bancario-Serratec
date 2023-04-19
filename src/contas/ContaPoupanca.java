@@ -4,7 +4,6 @@ import banco.Agencia;
 import banco.TipoConta;
 import pessoas.Pessoa;
 
-
 public class ContaPoupanca extends Conta{
 	
 	public ContaPoupanca(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {

@@ -130,18 +130,43 @@ public class SistemaBancario {
 		System.out.println(Banco.getListaAgencias().size());
 		
 		//---------------------------//
-		//		CRIANDO UMA CONTA 	 //
+		//		CRIANDO UMA CONTA 	 	//
 		//---------------------------//
+
+		//O construtor de Conta é o seguinte:
+		//Conta(Numero da Conta, o titular do tipo Pessoa, saldo, tipo e agencia)
+		//Então antes de criarmos a Classe conta, precisamos criar o titular da conta:
+		//O Construtor de Pessoa é (nome, cpf, senha, cargo)
+		//Pode-se perceber que utilizamos Polimorfismo nos dois casos, ao criarmos uma variavel
+		//chamada "pessoa" e definirmos o tipo dela como Pessoa porém instanciamos um tipo Cliente.
+		//Em conta, a mesma coisa.
+		//Fizemos assim pois será importante no futuro.
 		Pessoa pessoa = new Cliente("Joice", "12345678910", 123456, Cargo.CLIENTE);
+
 		Conta conta = new ContaCorrente(1234, pessoa, 100.50, TipoConta.CONTA_CORRENTE, A3);
+
+		//Após abrirmos uma nova conta, precisamos adicioná-la na agencia e o método addNovaConta faz
+		//exatamente isso
+		//Ele é responsável por adicionar a conta que criamos na lista de contas que a nossa agencia tem 
+		//sob sua responsabilidade.
+
 		A3.addNovaConta(conta);
-	    System.out.println(A3.getContas());
+
+		//Agora vamos testar se a conta foi realmente adicionada, chamando a lista de contas da agencia
+	  System.out.println(A3.getContas());
+		//Agora vamos ver quantas contas estão vinculadas a agencia A3
 		System.out.println(A3.getNumContas(G3));
+		
+		//Testando métodos de conta
 		conta.sacar(500.00);
 		conta.depositar(1000.0);
+
+		//Criando uma nova conta para realizar a transferencia
 		Pessoa pessoa2 = new Cliente("Maria", "12345678910", 123456, Cargo.CLIENTE);
 		Conta conta2 = new ContaCorrente(1234, pessoa2, 1000.50, TipoConta.CONTA_CORRENTE, A1);
+
 		conta.transferir(conta2, 100.0);
+
 		System.out.println("O saldo da " + conta.getTitular().getNome() + " é: " + conta.getSaldo());
 		System.out.println("O saldo da " + conta2.getTitular().getNome() + " é: " + conta2.getSaldo());
 		

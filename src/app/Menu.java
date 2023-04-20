@@ -45,6 +45,7 @@ public class Menu {
 			System.out.println("Cpf existe");
 			if (Cliente.listaCliente.get(cpf).getTitular().getSenha() == senha) {
 				System.out.println("Acesso Permitido!");
+				mostrarOpcoesClientes();
 			} else {
 				System.out.println("Senha incorreta!");
 			}
@@ -73,6 +74,22 @@ public class Menu {
 		}
 	}
 
+	public void mostrarOpcoesClientes() {
+		
+	int opcao = 0;
+	do {
+		System.out.println("\n MENU DO CLIENTE \n");
+		System.out.println("1. Movimentações na conta.");
+		System.out.println("2. Relatórios.");
+		System.out.println("3. Sair. \n");
+		System.out.println("Digite sua opção: ");
+		opcao = sc.nextInt();
+	}while (opcao  != 3);
+		
+		
+	}
+	
+	public void mostrarOpcoesFuncionarios() {
+		
+	}
 }
-
-// public void mostrarOpcoes (); {

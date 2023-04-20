@@ -9,16 +9,17 @@ public class Cliente extends Pessoa {
 	
 	public Cliente(String nome, String cpf, int senha, Cargo tipo) {
 		super(nome, cpf, senha, tipo);
+		listaCliente.put(cpf, this);
 		
 	}
 
-	public HashMap<String, Conta> listaCliente = new HashMap<String, Conta>();
+	public static HashMap<String, Cliente> listaCliente = new HashMap<String, Cliente>();
 
-	public HashMap<String, Conta> getListaCliente() {
+	public HashMap<String, Cliente> getListaCliente() {
 		return listaCliente;
 	}
 
-	public void setListaCliente(HashMap<String, Conta> listaCliente) {
+	public void setListaCliente(HashMap<String, Cliente> listaCliente) {
 		this.listaCliente = listaCliente;
 	}
 

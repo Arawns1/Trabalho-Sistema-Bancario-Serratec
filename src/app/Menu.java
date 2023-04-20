@@ -40,6 +40,8 @@ public class Menu {
 		int senha=sc.nextInt();
 		 if(Cliente.listaCliente.containsKey(cpf)) {
 			 System.out.println("Cpf existe");
+		 }else {
+			 System.out.println("CPF não identificado");
 		 }
 		
 		

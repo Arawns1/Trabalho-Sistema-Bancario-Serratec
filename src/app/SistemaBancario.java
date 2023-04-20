@@ -178,6 +178,9 @@ public class SistemaBancario {
 		
 		ContaPoupanca cp = new ContaPoupanca(7656, pessoa2, 33, TipoConta.CONTA_POUPANCA, A3);
 			cp.simularRendimento(2000, 3);
-	}
+			
+			Menu menu = new Menu();
+			menu.Login();
+	}	
 
 }

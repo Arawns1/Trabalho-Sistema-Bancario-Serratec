@@ -55,7 +55,7 @@ public class Menu {
 	}
 
 	public void fazerLoginAdministrativo() {
-		Funcionario Melson = new Gerente("Melson", "1", 1,Cargo.GERENTE, 123); 
+		Funcionario Melson = new Gerente("Melson", "1", 1,Cargo.DIRETOR, 123); 
 		System.out.println("Faça seu Login ");
 		System.out.println("Digite seu CPF: ");
 		String cpf = sc.next();

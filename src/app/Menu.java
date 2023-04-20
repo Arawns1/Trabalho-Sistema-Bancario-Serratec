@@ -6,6 +6,8 @@ import banco.Banco;
 import pessoas.Cliente;
 import pessoas.Pessoa;
 import pessoas.funcionarios.Cargo;
+import pessoas.funcionarios.Funcionario;
+import pessoas.funcionarios.Gerente;
 
 public class Menu {
 	Scanner sc = new Scanner(System.in);
@@ -23,7 +25,7 @@ public class Menu {
 		}
 
 		else if (escolha == 2) {
-			// fazerLoginAdministrativo();
+		 fazerLoginAdministrativo();
 		} else {
 			System.out.println("Opção Inválida, tente novamente!");
 			Login();
@@ -33,7 +35,7 @@ public class Menu {
 	}
 
 	public void fazerLoginCliente() {
-		Pessoa p = new Cliente("Nelson", "1234",1234, Cargo.CLIENTE);
+		Pessoa p = new Cliente("Nelson", "1234", 1234, Cargo.CLIENTE);
 		System.out.println("Faça seu Login ");
 		System.out.println("Digite seu CPF: ");
 		String cpf = sc.next();
@@ -52,7 +54,24 @@ public class Menu {
 
 	}
 
-	// public void fazerLoginAdministrativo(); {
+	public void fazerLoginAdministrativo() {
+		Funcionario Melson = new Gerente("Melson", "1", 1,Cargo.GERENTE, 123); 
+		System.out.println("Faça seu Login ");
+		System.out.println("Digite seu CPF: ");
+		String cpf = sc.next();
+		System.out.println("Digite sua Senha: ");
+		int senha = sc.nextInt();
+		if (Funcionario.listaFuncionarios.containsKey(cpf)) {
+			if (Funcionario.listaFuncionarios.get(cpf).getSenha() == senha) {
+				System.out.println("Acesso Permitido!");
+				System.out.println(Funcionario.listaFuncionarios.get(cpf).getTipo());
+			} else {
+				System.out.println("Senha incorreta!");
+			}
+		} else {
+			System.out.println("CPF não identificado");
+		}
+	}
 
 }
 

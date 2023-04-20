@@ -14,6 +14,8 @@ public class Gerente extends Funcionario {
 		super(nome, cpf, senha, tipo);
 	}
 
+
+
 	public void gerarRelatorioNumeroContas() {
 		
 	}

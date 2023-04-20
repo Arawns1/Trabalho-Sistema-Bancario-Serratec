@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import banco.Banco;
 import pessoas.Cliente;
+import pessoas.Pessoa;
+import pessoas.funcionarios.Cargo;
 
 public class Menu {
 	Scanner sc = new Scanner(System.in);
@@ -31,6 +33,7 @@ public class Menu {
 	}
 
 	public void fazerLoginCliente() {
+		Pessoa p = new Cliente("Nelson", "1234",1234, Cargo.CLIENTE);
 		System.out.println("Faça seu Login ");
 		System.out.println("Digite seu CPF: ");
 		String cpf = sc.next();
@@ -38,9 +41,8 @@ public class Menu {
 		int senha = sc.nextInt();
 		if (Cliente.listaCliente.containsKey(cpf)) {
 			System.out.println("Cpf existe");
-			if (Cliente.listaCliente.get(cpf).getSenha() == senha) {
+			if (Cliente.listaCliente.get(cpf).getTitular().getSenha() == senha) {
 				System.out.println("Acesso Permitido!");
-
 			} else {
 				System.out.println("Senha incorreta!");
 			}

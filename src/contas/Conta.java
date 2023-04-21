@@ -8,9 +8,7 @@ import java.util.List;
 
 import banco.Agencia;
 import banco.Banco;
-import banco.Operacao;
 import banco.TipoConta;
-import pessoas.Cliente;
 import pessoas.Pessoa;
 
 public abstract class Conta {
@@ -31,18 +29,18 @@ public abstract class Conta {
 		this.saldo = saldo;
 		this.tipo = tipo;
 		this.agencia = agencia;
-		Banco.listaCliente.put(titular.getCpf(), this);
+		Banco.getListaCliente().put(titular.getCpf(), this);
 	}
 
-		public void sacar(Double valor) {
+	public void sacar(Double valor) {
 		if (valor > 0 && this.saldo >= valor) {
 			this.saldo -= valor;
 			momentoOperacao = LocalDateTime.now();
 			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
-			System.out.println("| Seu saque foi realizado com sucesso!");
+			System.out.println("| ✔ Seu saque foi realizado com sucesso!");
 
 		} else {
-			System.out.println("| Não foi possivel realizar o saque!");
+			System.out.println("| ❌ Não foi possivel realizar o saque!");
 		}
 	}
 
@@ -51,40 +49,39 @@ public abstract class Conta {
 			momentoOperacao = LocalDateTime.now();
 			this.saldo += valor;
 			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
-			System.out.println("Seu deposito foi realizado com sucesso");
+			System.out.println("| ✔ Seu deposito foi realizado com sucesso");
 		} else {
-			System.out.println("Não foi possivel realizar o deposito");
+			System.out.println("| ❌ Não foi possivel realizar o deposito");
 		}
 	}
-	
+
 	public void transferir(Conta contaDestino, double valor) {
-		if (valor > 0 && this.saldo >= valor){
+		if (valor > 0 && this.saldo >= valor) {
 			momentoOperacao = LocalDateTime.now();
 			this.saldo -= valor;
 			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
-			System.out.println("Trasferência realizada com sucesso");
+			System.out.println("| ✔ Trasferência realizada com sucesso");
 			contaDestino.saldo += valor;
-		
+
 		} else {
-			System.out.println("Saldo insuficiente para realizar a operação");
+			System.out.println("| ❌ Saldo insuficiente para realizar a operação");
 		}
 	}
 
 	public void tirarExtrato() {
 		System.out.println("-".repeat(40));
-		System.out.println("\t   EXTRATO");
-		System.out.println("+"+"-".repeat(39));
-		System.out.println();
+		System.out.println("\t\tEXTRATO");
+		System.out.println("" + "-".repeat(39));
 		System.out.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
 		System.out.println("Gerado em: " + LocalDateTime.now().format(dtf));
 		System.out.println();
 		System.out.println("\tHORA\t  |  OPERAÇÃO  |  VALOR");
-		System.out.println("+"+"-".repeat(40));
+		System.out.println("+" + "-".repeat(40));
 		for (int i = 0; i < transacoes.size(); i++) {
 			System.out.println(transacoes.get(i));
 		}
-		System.out.println("+"+"-".repeat(39));
-		System.out.println(" ".repeat(16)+" Saldo Final: R$" + String.format("%.2f", this.saldo));
+		System.out.println("+" + "-".repeat(39));
+		System.out.println(" ".repeat(16) + " Saldo Final: R$" + String.format("%.2f", this.saldo));
 	}
 
 	public int getNumero() {
@@ -127,7 +124,7 @@ public abstract class Conta {
 		this.agencia = agencia;
 	}
 
-	public List<String>  getTransacoes() {
+	public List<String> getTransacoes() {
 		return transacoes;
 	}
 
@@ -141,6 +138,4 @@ public abstract class Conta {
 				+ agencia + "]";
 	}
 
-	}
-	
-
+}

@@ -30,10 +30,10 @@ public class ContaCorrente extends Conta {
 			this.saldo -= valor + TAXA_TRANSFERENCIA;
 			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
 			totalTaxaTransferencia += TAXA_TRANSFERENCIA;
-			System.out.println("Trasferência realizada com sucesso");
+			System.out.println(" ✔ Trasferência realizada com sucesso");
 			contaDestino.saldo += valor;
 		} else {
-			System.out.println("Saldo insuficiente para realizar a operação");
+			System.out.println(" ❌ Saldo insuficiente para realizar a operação");
 		}
 		
 	}
@@ -46,9 +46,9 @@ public class ContaCorrente extends Conta {
 			this.saldo -= TAXA_DEPOSITO;
 			totalTaxaDeposito += TAXA_DEPOSITO;
 			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
-			System.out.println("Seu deposito foi realizado com sucesso");
+			System.out.println("| ✔ Seu deposito foi realizado com sucesso");
 		} else {
-			System.out.println("Não foi possivel realizar o deposito");
+			System.out.println("|  Não foi possivel realizar o deposito");
 		}
 	}
 	
@@ -59,20 +59,20 @@ public class ContaCorrente extends Conta {
 			totalTaxaSaque +=TAXA_SAQUE;
 			momentoOperacao = LocalDateTime.now();
 			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
-			System.out.println("Seu saque foi realizado com sucesso");
+			System.out.println("| ✔ Seu saque foi realizado com sucesso");
 
 		} else {
-			System.out.println("Não foi possivel realizar o saque");
+			System.out.println("| ❌ Não foi possivel realizar o saque");
 		}
 	}
 
 
 
-	public void TirarRelatorioTaxa() {
-		System.out.println("Total gasto com Taxas de saque: R$" + this.totalTaxaSaque);
-		System.out.println("Total gasto com Taxas de depósito: R$" + this.totalTaxaDeposito);
-		System.out.println("Total gasto com Taxas de transferência: R$" + this.totalTaxaTransferencia);
-		System.out.println("O somatório total das Taxas de saque: R$" + (this.totalTaxaSaque + this.totalTaxaDeposito + this.totalTaxaTransferencia));
+	public void tirarRelatorioTaxa() {
+		System.out.println("| Total gasto com taxas de saque: R$" + String.format("%.2f", this.totalTaxaSaque)  );
+		System.out.println("| Total gasto com taxas de depósito: R$" + String.format("%.2f",this.totalTaxaDeposito));
+		System.out.println("| Total gasto com taxas de transferência: R$" + String.format("%.2f",this.totalTaxaTransferencia));
+		System.out.println("| O somatório total das taxas: R$" + String.format("%.2f",(this.totalTaxaSaque + this.totalTaxaDeposito + this.totalTaxaTransferencia)));
 
 	}
 

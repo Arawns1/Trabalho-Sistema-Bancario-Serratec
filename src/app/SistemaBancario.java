@@ -1,12 +1,8 @@
 package app;
 
-import java.util.Iterator;
-
 import banco.Agencia;
 import banco.Banco;
-import banco.Operacao;
 import banco.TipoConta;
-import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
 import pessoas.Cliente;
@@ -19,21 +15,20 @@ import pessoas.funcionarios.Presidente;
 public class SistemaBancario {
 
 	public static void main(String[] args) {
-
 		Banco.setNome("G5 bank");
 		
 		Presidente P1 = new Presidente("Belson", "2", 234, Cargo.PRESIDENTE);
 		
-		Gerente G1 = new Gerente("Gabriel", "123456789", 1234, Cargo.GERENTE);
+		Gerente G1 = new Gerente("Gabriel", "1", 1, Cargo.GERENTE, 0);
 		Agencia A1 = new Agencia(0, G1);
 
 		Pessoa p = new Cliente("Nelson", "1234", 1234, Cargo.CLIENTE);
 		ContaCorrente cc = new ContaCorrente(5463, p, 1020.1, TipoConta.CONTA_CORRENTE, A1);
 
 		Pessoa p2 = new Cliente("Pedro", "4321", 4321, Cargo.CLIENTE);
-		ContaCorrente cc2 = new ContaCorrente(5462, p2, 100, TipoConta.CONTA_CORRENTE, A1);
+		ContaPoupanca PP2 = new ContaPoupanca(5462, p2, 100, TipoConta.CONTA_POUPANCA, A1);
 
-		Funcionario Melson = new Gerente("Melson", "1", 1, Cargo.GERENTE);
+		Funcionario Melson = new Gerente("Melson", "123", 123, Cargo.GERENTE, 1);
 		Banco.setNome("G5 bank");
 
 		Menu menu = new Menu();

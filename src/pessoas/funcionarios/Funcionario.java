@@ -8,7 +8,7 @@ public abstract class Funcionario extends Pessoa{
 	
 	public Funcionario(String nome, String cpf, int senha, Cargo tipo) {
 		super(nome, cpf, senha, tipo);
-		Banco.listaFuncionarios.put(cpf, this);
+		Banco.getListaFuncionarios().put(cpf, this);
 	}
 
 	public void addNovaConta() {}

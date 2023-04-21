@@ -6,11 +6,8 @@ import banco.Banco;
 import banco.TipoConta;
 import contas.Conta;
 import contas.ContaCorrente;
-import pessoas.Cliente;
-import pessoas.Pessoa;
-import pessoas.funcionarios.Cargo;
+import contas.ContaPoupanca;
 import pessoas.funcionarios.Funcionario;
-import pessoas.funcionarios.Gerente;
 
 public class Menu {
 	Scanner sc = new Scanner(System.in);
@@ -59,11 +56,13 @@ public class Menu {
 				fazerLoginCliente();
 			} else if (escolha == 2) {
 				fazerLoginAdministrativo();
-				break;
 			} else {
 				System.out.println("|❌ Opção Inválida, tente novamente!");
-				Login();
 			}
+			System.out.println("=".repeat(40));
+			System.out.println(" Obrigado por utilizar nossos serviços!");
+			System.out.println("\t\tG5 BANK ©");
+			System.out.println("=".repeat(40));
 		} while (escolha != 1 || escolha != 2);
 
 	}
@@ -83,9 +82,9 @@ public class Menu {
 
 		// Verificando na listaCliente se ela contém o CPF e se a Senha digitada está
 		// correta.
-		if (Banco.listaCliente.containsKey(cpf)) {
-			if (Banco.listaCliente.get(cpf).getTitular().getSenha() == senha) {
-				mostrarOpcoesClientes(Banco.listaCliente.get(cpf));
+		if (Banco.getListaCliente().containsKey(cpf)) {
+			if (Banco.getListaCliente().get(cpf).getTitular().getSenha() == senha) {
+				mostrarOpcoesClientes(Banco.getListaCliente().get(cpf));
 			} else {
 				System.out.println("|⚠ Senha incorreta, tente novamente!");
 			}
@@ -106,10 +105,10 @@ public class Menu {
 		System.out.println("|-> Digite sua Senha: ");
 		System.out.print("| Senha: ");
 		int senha = sc.nextInt();
-		if (Banco.listaFuncionarios.containsKey(cpf)) {
-			if (Banco.listaFuncionarios.get(cpf).getSenha() == senha) {
+		if (Banco.getListaFuncionarios().containsKey(cpf)) {
+			if (Banco.getListaFuncionarios().get(cpf).getSenha() == senha) {
 				System.out.println("Acesso Permitido!");
-				mostrarOpcoesFuncionarios(Banco.listaFuncionarios.get(cpf));
+				mostrarOpcoesFuncionarios(Banco.getListaFuncionarios().get(cpf));
 			} else {
 				System.out.println("Senha incorreta!");
 			}
@@ -122,7 +121,7 @@ public class Menu {
 		int opcao = 0;
 		do {
 			System.out.println("-".repeat(40));
-			System.out.println("\t      SUA CONTA");
+			System.out.println("\t   MENU PRINCIPAL");
 			System.out.println("-".repeat(40));
 			System.out.println("| Olá " + contaLogada.getTitular().getNome() + ", seja bem-vindo!");
 			System.out.println("+");
@@ -135,15 +134,12 @@ public class Menu {
 			opcao = sc.nextInt();
 			switch (opcao) {
 			case 1:
-				movimentacoesConta(contaLogada);
+				movimentacoesContaCliente(contaLogada);
 				break;
 			case 2:
+				relatoriosContaCliente(contaLogada);
 				break;
 			case 3:
-				System.out.println("=".repeat(40));
-				System.out.println(" Obrigado por utilizar nossos serviços!");
-				System.out.println("\t\tG5 BANK ©");
-				System.out.println("=".repeat(40));
 				break;
 			default:
 				System.out.println("|❌ Opção Inválida, tente novamente!");
@@ -152,7 +148,7 @@ public class Menu {
 		} while (opcao != 3);
 	}
 
-	public void movimentacoesConta(Conta contaLogada) {
+	public void movimentacoesContaCliente(Conta contaLogada) {
 		int opcao = 0;
 		do {
 			System.out.println("-".repeat(40));
@@ -187,13 +183,13 @@ public class Menu {
 				System.out.println("|-> Digite o CPF do destinatário (apenas números)");
 				System.out.print("| CPF: ");
 				String CPF = sc.next();
-				if (Cliente.listaCliente.containsKey(CPF)) {
+				if (Banco.getListaCliente().containsKey(CPF) && !CPF.equals(contaLogada.getTitular().getCpf()) ) {
 					System.out.println("|-> Digite o valor da transferência");
 					System.out.print("| Valor: R$");
 					double valorTransferencia = sc.nextDouble();
-					contaLogada.transferir(Cliente.listaCliente.get(CPF), valorTransferencia);
+					contaLogada.transferir(Banco.getListaCliente().get(CPF), valorTransferencia);
 				} else {
-					System.out.println("CPF do destintário não encontrado ");
+					System.out.println("Não foi possível transferir para esse CPF");
 				}
 				break;
 
@@ -210,10 +206,62 @@ public class Menu {
 		} while (opcao != 5);
 	}
 
+	public void relatoriosContaCliente(Conta contaLogada) {
+		System.out.println("-".repeat(40));
+		System.out.println("\t      RELATÓRIOS");
+		System.out.println("-".repeat(40));
+		System.out.println("|-> 1. Ver saldo e informações da conta");
+		
+		if (contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
+			System.out.println("|-> 2. Relatório de Tributações.");
+
+		} else {
+			System.out.println("|-> 2. Relatório de Rendimentos.");
+		}
+		System.out.println("|-> 3. Voltar ao Menu principal.");
+		System.out.println("+");
+		System.out.print("| Digite uma opção: ");
+		int escolha = sc.nextInt();
+		System.out.println("+");
+		switch (escolha) {
+		case 1:
+			System.out.println("| Seu saldo é: R$" + String.format("%.2f", contaLogada.getSaldo()));
+			System.out.println("| Sua Agência é: " + contaLogada.getAgencia().getNumero());
+			System.out.println("| O número da sua conta é: " + contaLogada.getNumero());
+			break;
+		case 2:
+			if (contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
+				((ContaCorrente)(contaLogada)).tirarRelatorioTaxa();
+			}
+			else {
+				System.out.println("|-> Digite um valor para ser simulado ");
+				System.out.print("| Valor: R$ ");
+				double valor = sc.nextDouble();
+				System.out.println("|-> Digite a quantidade de dias que deseja deixa esse dinheiro render ");
+				System.out.print("| Quantidade dias: ");
+				int dias = sc.nextInt();
+				System.out.println("+");
+				((ContaPoupanca)(contaLogada)).simularRendimento(valor, dias);
+				
+			}
+
+			break;
+		case 3:
+
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
 	public void mostrarOpcoesFuncionarios(Funcionario funcionario) {
 		switch (funcionario.getTipo()) {
 		case GERENTE:
-			System.out.println("TU É GERENTE");
+			System.out.println("|-> 1. Gerar Relatório Contas da Agencia");
+			System.out.println("|-> 2. Sair");
+			System.out.println("| Digite uma opção: ");
 			break;
 		case DIRETOR:
 			System.out.println("TU É DIRETOR");

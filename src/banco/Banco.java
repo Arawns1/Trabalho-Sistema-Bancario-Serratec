@@ -3,15 +3,14 @@ package banco;
 import java.util.HashMap;
 
 import contas.Conta;
-import pessoas.Pessoa;
 import pessoas.funcionarios.Funcionario;
 import pessoas.funcionarios.Presidente;
 
 public abstract class Banco {
 	private static String nome;
 	private static Presidente presidente;
-	public static HashMap<String, Conta> listaCliente = new HashMap<String, Conta>();
-	public static HashMap<String, Funcionario> listaFuncionarios = new HashMap<String, Funcionario>();
+	private static HashMap<String, Conta> listaCliente = new HashMap<String, Conta>();
+	private static HashMap<String, Funcionario> listaFuncionarios = new HashMap<String, Funcionario>();
 	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<Integer, Agencia>();
 	private static double saldoTotal;
 	private static int contadorAgencia = 1;

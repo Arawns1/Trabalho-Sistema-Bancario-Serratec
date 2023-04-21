@@ -1,9 +1,6 @@
 package pessoas;
 
-import java.util.HashMap;
 
-import contas.Conta;
-import contas.ContaPoupanca;
 import pessoas.funcionarios.Cargo;
 
 public class Cliente extends Pessoa {

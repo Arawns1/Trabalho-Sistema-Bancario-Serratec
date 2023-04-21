@@ -3,7 +3,9 @@ package app;
 import java.util.Scanner;
 
 import banco.Banco;
+import banco.TipoConta;
 import contas.Conta;
+import contas.ContaCorrente;
 import pessoas.Cliente;
 import pessoas.Pessoa;
 import pessoas.funcionarios.Cargo;
@@ -37,6 +39,7 @@ public class Menu {
 
 	public void fazerLoginCliente() {
 		Pessoa p = new Cliente("Nelson", "1234", 1234, Cargo.CLIENTE);
+		ContaCorrente cc = new ContaCorrente(5463, p, 1020.1, TipoConta.CONTA_CORRENTE, null);
 		System.out.println("Faça seu Login ");
 		System.out.println("Digite seu CPF: ");
 		String cpf = sc.next();
@@ -110,6 +113,7 @@ public class Menu {
 		int opcao = sc.nextInt();
 		switch (opcao) {
 		case 1: 
+			System.out.println(contaLogada.getSaldo());
 			System.out.println("Digite o valor do saque: ");
 			double valorSaque = sc.nextDouble();
 			contaLogada.sacar(valorSaque);
@@ -120,7 +124,22 @@ public class Menu {
 			contaLogada.depositar (valorDeposito);
 			break;
 			
-			
+		case 3:
+			System.out.println("Digite o CPF do destinatário: ");
+			String CPF = sc.next();
+			if (Cliente.listaCliente.containsKey(CPF)){
+				System.out.println("Digite o valor da transferência: ");
+				double valorTransferencia = sc.nextDouble();
+				contaLogada.transferir(Cliente.listaCliente.get(CPF), valorTransferencia);
+			}else {
+				System.out.println("CPF do destintário não encontrado ");
+			}
+			break;
+		
+		case 4:
+			contaLogada.tirarExtrato();
+			break;
+		
 		}
 	}
 	

@@ -9,6 +9,7 @@ import java.util.List;
 import banco.Agencia;
 import banco.Operacao;
 import banco.TipoConta;
+import pessoas.Cliente;
 import pessoas.Pessoa;
 
 public abstract class Conta {
@@ -29,6 +30,7 @@ public abstract class Conta {
 		this.saldo = saldo;
 		this.tipo = tipo;
 		this.agencia = agencia;
+		Cliente.listaCliente.put(titular.getCpf(), this);
 	}
 
 		public void sacar(Double valor) {
@@ -36,10 +38,10 @@ public abstract class Conta {
 			this.saldo -= valor;
 			momentoOperacao = LocalDateTime.now();
 			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
-			System.out.println("Seu saque foi realizado com sucesso");
+			System.out.println("| Seu saque foi realizado com sucesso!");
 
 		} else {
-			System.out.println("Não foi possivel realizar o saque");
+			System.out.println("| Não foi possivel realizar o saque!");
 		}
 	}
 
@@ -68,18 +70,20 @@ public abstract class Conta {
 	}
 
 	public void tirarExtrato() {
-		System.out.println("--------------- EXTRATO ----------------");
+		System.out.println("-".repeat(40));
+		System.out.println("\t   EXTRATO");
+		System.out.println("+"+"-".repeat(39));
 		System.out.println();
 		System.out.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
 		System.out.println("Gerado em: " + LocalDateTime.now().format(dtf));
 		System.out.println();
 		System.out.println("\tHORA\t  |  OPERAÇÃO  |  VALOR");
-		System.out.println("-".repeat(40));
+		System.out.println("+"+"-".repeat(40));
 		for (int i = 0; i < transacoes.size(); i++) {
 			System.out.println(transacoes.get(i));
 		}
-		System.out.println("-".repeat(40));
-		System.out.println(" ".repeat(19)+" Saldo Final: R$" + String.format("%.2f", this.saldo));
+		System.out.println("+"+"-".repeat(39));
+		System.out.println(" ".repeat(16)+" Saldo Final: R$" + String.format("%.2f", this.saldo));
 	}
 
 	public int getNumero() {

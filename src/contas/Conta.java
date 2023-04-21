@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import banco.Agencia;
+import banco.Banco;
 import banco.Operacao;
 import banco.TipoConta;
 import pessoas.Cliente;
@@ -30,7 +31,7 @@ public abstract class Conta {
 		this.saldo = saldo;
 		this.tipo = tipo;
 		this.agencia = agencia;
-		Cliente.listaCliente.put(titular.getCpf(), this);
+		Banco.listaCliente.put(titular.getCpf(), this);
 	}
 
 		public void sacar(Double valor) {

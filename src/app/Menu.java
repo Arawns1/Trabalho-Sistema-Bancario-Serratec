@@ -26,14 +26,12 @@ public class Menu {
 		 */
 
 		System.out.print("\r\n" + "██████████████████████████████████████████" + "\r\n"
-				+ "██      ██       █████████████████████████" + "\r\n"
-				+ "█  ███████  ███████ ██████████████████████" + "\r\n"
-				+ "█  ███   █      ███    ███    ██   ██ ██ █" + "\r\n"
-				+ "█  ████  ██████  ██ ███ █ ███ ██ ██ █   ██" + "\r\n"
-				+ "██      ██      ███    ███   █ █ ██ █ ██ █" + "\r\n"
-				+ "██████████████████████████████████████████" + "\r\n"
-				+ "███ O BANCO QUE IMPULSIONA SEUS SONHOS! ██" + "\r\n"
-				+ "██████████████████████████████████████████" + "\r\n");
+				+ "██      ██       █████████████████████████" + "\r\n" + "█  ███████  ███████ ██████████████████████"
+				+ "\r\n" + "█  ███   █      ███    ███    ██   ██ ██ █" + "\r\n"
+				+ "█  ████  ██████  ██ ███ █ ███ ██ ██ █   ██" + "\r\n" + "██      ██      ███    ███   █ █ ██ █ ██ █"
+				+ "\r\n" + "██████████████████████████████████████████" + "\r\n"
+				+ "███ O BANCO QUE IMPULSIONA SEUS SONHOS! ██" + "\r\n" + "██████████████████████████████████████████"
+				+ "\r\n");
 		/*
 		 * System.out.println("\r\n" +
 		 * "  ██████  ███████                           \r\n" +
@@ -61,6 +59,7 @@ public class Menu {
 				fazerLoginCliente();
 			} else if (escolha == 2) {
 				fazerLoginAdministrativo();
+				break;
 			} else {
 				System.out.println("|❌ Opção Inválida, tente novamente!");
 				Login();
@@ -84,9 +83,9 @@ public class Menu {
 
 		// Verificando na listaCliente se ela contém o CPF e se a Senha digitada está
 		// correta.
-		if (Cliente.listaCliente.containsKey(cpf)) {
-			if (Cliente.listaCliente.get(cpf).getTitular().getSenha() == senha) {
-				mostrarOpcoesClientes(Cliente.listaCliente.get(cpf));
+		if (Banco.listaCliente.containsKey(cpf)) {
+			if (Banco.listaCliente.get(cpf).getTitular().getSenha() == senha) {
+				mostrarOpcoesClientes(Banco.listaCliente.get(cpf));
 			} else {
 				System.out.println("|⚠ Senha incorreta, tente novamente!");
 			}
@@ -96,16 +95,21 @@ public class Menu {
 	}
 
 	public void fazerLoginAdministrativo() {
-		System.out.println("Faça seu Login ");
-		System.out.println();
-		System.out.println("Digite seu CPF: ");
+		System.out.println("-".repeat(40));
+		System.out.println("\t  LOGIN ADMINISTRATIVO");
+		System.out.println("-".repeat(40));
+		// Pegando dados do Funcionário
+		System.out.println("FAÇA LOGIN ");
+		System.out.println("|-> Digite seu CPF (apenas números) ");
+		System.out.print("| CPF: ");
 		String cpf = sc.next();
-		System.out.println("Digite sua Senha: ");
+		System.out.println("|-> Digite sua Senha: ");
+		System.out.print("| Senha: ");
 		int senha = sc.nextInt();
-		if (Funcionario.listaFuncionarios.containsKey(cpf)) {
-			if (Funcionario.listaFuncionarios.get(cpf).getSenha() == senha) {
+		if (Banco.listaFuncionarios.containsKey(cpf)) {
+			if (Banco.listaFuncionarios.get(cpf).getSenha() == senha) {
 				System.out.println("Acesso Permitido!");
-				System.out.println(Funcionario.listaFuncionarios.get(cpf).getTipo());
+				mostrarOpcoesFuncionarios(Banco.listaFuncionarios.get(cpf));
 			} else {
 				System.out.println("Senha incorreta!");
 			}
@@ -206,7 +210,20 @@ public class Menu {
 		} while (opcao != 5);
 	}
 
-	public void mostrarOpcoesFuncionarios() {
+	public void mostrarOpcoesFuncionarios(Funcionario funcionario) {
+		switch (funcionario.getTipo()) {
+		case GERENTE:
+			System.out.println("TU É GERENTE");
+			break;
+		case DIRETOR:
+			System.out.println("TU É DIRETOR");
+			break;
+		case PRESIDENTE:
+			System.out.println("TU É PRESIDENTE");
+			break;
 
+		default:
+			break;
+		}
 	}
 }

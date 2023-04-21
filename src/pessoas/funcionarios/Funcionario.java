@@ -1,18 +1,14 @@
 package pessoas.funcionarios;
 
-import java.util.HashMap;
-
+import banco.Banco;
 import pessoas.Pessoa;
 
 public abstract class Funcionario extends Pessoa{
-	public static HashMap<String,Funcionario> listaFuncionarios = new HashMap<String, Funcionario>();
 	
 	
 	public Funcionario(String nome, String cpf, int senha, Cargo tipo) {
 		super(nome, cpf, senha, tipo);
-		listaFuncionarios.put(cpf, this);
-		
-		
+		Banco.listaFuncionarios.put(cpf, this);
 	}
 
 	public void addNovaConta() {}

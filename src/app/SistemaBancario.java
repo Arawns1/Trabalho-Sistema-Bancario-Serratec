@@ -21,7 +21,9 @@ public class SistemaBancario {
 	public static void main(String[] args) {
 
 		Banco.setNome("G5 bank");
-
+		
+		Presidente P1 = new Presidente("Belson", "2", 234, Cargo.PRESIDENTE);
+		
 		Gerente G1 = new Gerente("Gabriel", "123456789", 1234, Cargo.GERENTE);
 		Agencia A1 = new Agencia(0, G1);
 

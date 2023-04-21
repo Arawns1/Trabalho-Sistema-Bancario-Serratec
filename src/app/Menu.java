@@ -3,6 +3,7 @@ package app;
 import java.util.Scanner;
 
 import banco.Banco;
+import contas.Conta;
 import pessoas.Cliente;
 import pessoas.Pessoa;
 import pessoas.funcionarios.Cargo;
@@ -45,7 +46,7 @@ public class Menu {
 			System.out.println("Cpf existe");
 			if (Cliente.listaCliente.get(cpf).getTitular().getSenha() == senha) {
 				System.out.println("Acesso Permitido!");
-				mostrarOpcoesClientes();
+				mostrarOpcoesClientes(Cliente.listaCliente.get(cpf));
 			} else {
 				System.out.println("Senha incorreta!");
 			}
@@ -74,19 +75,53 @@ public class Menu {
 		}
 	}
 
-	public void mostrarOpcoesClientes() {
+	public void mostrarOpcoesClientes(Conta contaLogada) {
 		
 	int opcao = 0;
 	do {
+		System.out.println("Olá " + contaLogada.getTitular().getNome() + ", Seja Bem-Vindo!");
 		System.out.println("\n MENU DO CLIENTE \n");
 		System.out.println("1. Movimentações na conta.");
 		System.out.println("2. Relatórios.");
 		System.out.println("3. Sair. \n");
 		System.out.println("Digite sua opção: ");
 		opcao = sc.nextInt();
+		switch (opcao) {
+		case 1:
+			movimentacoesConta(contaLogada);
+			break;
+			
+			
+		}
 	}while (opcao  != 3);
+	
 		
 		
+	}
+	
+	public void movimentacoesConta(Conta contaLogada) {
+		System.out.println("\n MOVIMENTAÇÕES NA CONTA \n");
+		System.out.println("1. Saque.");
+		System.out.println("2. Depósito.");
+		System.out.println("3. Transferência para outra conta.");
+		System.out.println("4. Extrato.");
+		System.out.println("5. Voltar ao Menu principal. ");
+		System.out.println("Digite sua opção:");
+		int opcao = sc.nextInt();
+		switch (opcao) {
+		case 1: 
+			System.out.println("Digite o valor do saque: ");
+			double valorSaque = sc.nextDouble();
+			contaLogada.sacar(valorSaque);
+			break;
+		case 2:
+			System.out.println("Digite o valor do depósito: ");
+			double valorDeposito = sc.nextDouble();
+			contaLogada.depositar (valorDeposito);
+			break;
+			
+			
+		}
 	}
 	
 	public void mostrarOpcoesFuncionarios() {

@@ -8,6 +8,7 @@ import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
 import pessoas.funcionarios.Funcionario;
+import pessoas.funcionarios.Gerente;
 
 public class Menu {
 	Scanner sc = new Scanner(System.in);
@@ -259,10 +260,17 @@ public class Menu {
 	public void mostrarOpcoesFuncionarios(Funcionario funcionario) {
 		switch (funcionario.getTipo()) {
 		case GERENTE:
+			int escolha = 0;
+		
 			System.out.println("|-> 1. Gerar Relatório Contas da Agencia");
 			System.out.println("|-> 2. Sair");
 			System.out.println("| Digite uma opção: ");
-			break;
+			escolha= sc.nextInt();
+           if(escolha==1) {
+           ((Gerente)(funcionario)).gerarRelatorioNumeroContas();
+           }
+			
+		
 		case DIRETOR:
 			System.out.println("TU É DIRETOR");
 			break;

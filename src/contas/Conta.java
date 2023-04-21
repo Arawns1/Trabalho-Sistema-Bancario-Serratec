@@ -30,6 +30,7 @@ public abstract class Conta {
 		this.tipo = tipo;
 		this.agencia = agencia;
 		Banco.getListaCliente().put(titular.getCpf(), this);
+		agencia.addNovaConta(this);
 	}
 
 	public void sacar(Double valor) {

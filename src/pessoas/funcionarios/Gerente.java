@@ -16,7 +16,7 @@ public class Gerente extends Funcionario {
 	}
 
 	public void gerarRelatorioNumeroContas() {
-		System.out.println(Banco.getListaAgencias().size());
+		System.out.println(Banco.getListaAgencias().get(numeroAgencia).getNumContas());
 	}
 
 	@Override

@@ -28,10 +28,10 @@ public class SistemaBancario {
 		Gerente G2 = new Gerente("Lelson", "1", 1, 1);
 		Agencia A2 = new Agencia(1, G2);
 
-		Cliente p = new Cliente("Nelson", "1234", 1234);
+		Cliente p = new Cliente("Ilson", "1234", 1234);
 		ContaCorrente cc = new ContaCorrente(5463, p, 1020.1, A1);
 
-		Cliente p2 = new Cliente("EPedro", "4321", 4321);
+		Cliente p2 = new Cliente("Kelson", "4321", 4321);
 		ContaPoupanca PP2 = new ContaPoupanca(5462, p2, 100, A2);
 		
 		Menu menu = new Menu();

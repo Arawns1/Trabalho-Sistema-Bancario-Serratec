@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import banco.Banco;
+import banco.SeguroDeVida;
 import banco.TipoConta;
 import banco.utils.EscreverArquivos;
 import banco.utils.LerArquivos;
@@ -131,7 +132,8 @@ public class Menu {
 			System.out.println("| O que deseja fazer?");
 			System.out.println("|-> 1. Movimentações na conta.");
 			System.out.println("|-> 2. Relatórios.");
-			System.out.println("|-> 3. Sair.");
+			System.out.println("|-> 3. Contratar seguro.");
+			System.out.println("|-> 4. Sair.");
 			System.out.println("+");
 			System.out.print("| Digite sua opção: ");
 			opcao = sc.nextInt();
@@ -143,12 +145,16 @@ public class Menu {
 				relatoriosContaCliente(contaLogada);
 				break;
 			case 3:
+				SeguroDeVida.contratarSeguro(contaLogada);
 				break;
+			case 4:
+				break;
+				
 			default:
 				System.out.println("|❌ Opção Inválida, tente novamente!");
 				break;
 			}
-		} while (opcao != 3);
+		} while (opcao != 4);
 	}
 
 	public void movimentacoesContaCliente(Conta contaLogada) {
@@ -216,6 +222,8 @@ public class Menu {
 				break;
 			case 5:
 				break;
+			
+				
 			default:
 				System.out.println("|❌ Opção Inválida, tente novamente!");
 				break;

@@ -79,7 +79,7 @@ public class ContaCorrente extends Conta {
 	@Override
 	public String toString() {
 		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo
-				+ ", agencia=" + agencia + "]";
+				+ "]";
 	}
 	
 	

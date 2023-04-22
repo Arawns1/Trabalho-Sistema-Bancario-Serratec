@@ -17,6 +17,10 @@ public class ContaPoupanca extends Conta{
 		System.out.println("| O valor após " + dias + " dias será de R$" + String.format("%.2f", montante));
 		System.out.println("| Os juros totais setão de R$" + String.format("%.2f", (montante - valorSimulado)) );
 	}
+	@Override
+	public String toString() {
+		return "ContaPoupanca [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
+	}
 	
 }
 	

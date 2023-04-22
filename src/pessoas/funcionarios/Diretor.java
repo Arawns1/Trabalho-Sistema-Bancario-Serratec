@@ -17,9 +17,9 @@ public class Diretor extends Gerente{
 	
 	public void gerarRelatorioInfoClientes() 
 	{
-		for(Integer a : Banco.getListaAgencias().keySet()) {
-			System.out.println(a + " : " + Banco.getListaAgencias().get(a).getContas());
-		}
+		
+		System.out.println(Banco.getListaCliente());
+		//System.out.println(Banco.getListaAgencias().get(1).getContas());
 		
 		
 	};

@@ -260,6 +260,7 @@ public class Menu {
 				((Gerente)(funcionario)).gerarRelatorioNumeroContas();
 			}
 			else if(escolha == 2){
+				Banco.testeHashMap();
 				((Diretor)(funcionario)).gerarRelatorioInfoClientes();
 			}
 			

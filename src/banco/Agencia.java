@@ -17,7 +17,7 @@ public class Agencia {
 		this.gerente = gerente;
 		Banco.addNovaAgencia(this);
 	}
-
+	
 	public void addNovaConta(Conta conta) {
 		contas.add(conta);
 

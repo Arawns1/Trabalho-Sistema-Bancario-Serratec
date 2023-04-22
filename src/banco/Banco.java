@@ -9,25 +9,29 @@ import contas.Conta;
 import pessoas.funcionarios.Funcionario;
 import pessoas.funcionarios.Presidente;
 
-public abstract class Banco {
+public abstract class Banco implements Comparable {
 	private static String nome;
 	private static Presidente presidente;
 	private static HashMap<String, Conta> listaCliente = new HashMap<String, Conta>();
 	private static HashMap<String, Funcionario> listaFuncionarios = new HashMap<String, Funcionario>();
 	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<Integer, Agencia>();
 	private static double saldoTotal;
-	private static int contadorAgencia = 1;
+	private static int contadorAgencia = 0;
+	public static List<String> titularesContas = new ArrayList<String>();
 
 	public static Agencia getAgencia(int numAgencia) {
 		return null;
 	}
-	
-	public static void testeOrdernar() {
-		List<Conta> listaValores = new ArrayList(listaCliente.values());
-		Collections.sort(listaValores );
-	}
-	
 
+	public static void testeHashMap() {
+		for (Integer i : listaAgencias.keySet()) {
+			for (Conta j : listaAgencias.get(i).getContas()) {
+				titularesContas.add(j.getTitular().getNome());
+			}
+		}
+		Collections.sort(titularesContas, String.CASE_INSENSITIVE_ORDER);
+		System.out.println(titularesContas);
+	}
 
 	public static void addNovaAgencia(Agencia agencia) {
 		// Em nossa classe principal (Sistema Bancario), criamos uma agencia e

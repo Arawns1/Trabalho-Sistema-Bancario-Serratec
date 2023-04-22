@@ -16,7 +16,6 @@ public class Agencia {
 		this.numero = numero;
 		this.gerente = gerente;
 		Banco.addNovaAgencia(this);
-
 	}
 
 	public void addNovaConta(Conta conta) {
@@ -24,7 +23,7 @@ public class Agencia {
 
 	}
 
-	public int getNumContas (){
+	public int getNumContas() {
 		return contas.size();
 
 	}

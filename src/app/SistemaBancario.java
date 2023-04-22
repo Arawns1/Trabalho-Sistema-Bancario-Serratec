@@ -8,6 +8,7 @@ import contas.ContaPoupanca;
 import pessoas.Cliente;
 import pessoas.Pessoa;
 import pessoas.funcionarios.Cargo;
+import pessoas.funcionarios.Diretor;
 import pessoas.funcionarios.Funcionario;
 import pessoas.funcionarios.Gerente;
 import pessoas.funcionarios.Presidente;
@@ -18,7 +19,7 @@ public class SistemaBancario {
 		Banco.setNome("G5 bank");
 		
 		Presidente P1 = new Presidente("Belson", "2", 234, Cargo.PRESIDENTE);
-		Gerente G1 = new Gerente("Gabriel", "1", 1, Cargo.GERENTE, 1);
+		Gerente G1 = new Gerente("Elson", "1", 1, Cargo.GERENTE, 1);
 		Agencia A1 = new Agencia(1, G1);
 
 		Pessoa p = new Cliente("Nelson", "1234", 1234, Cargo.CLIENTE);
@@ -28,7 +29,8 @@ public class SistemaBancario {
 		ContaPoupanca PP2 = new ContaPoupanca(5462, p2, 100, TipoConta.CONTA_POUPANCA, A1);
 
 		Funcionario Melson = new Gerente("Melson", "123", 123, Cargo.GERENTE, 1);
-		Banco.setNome("G5 bank");
+		Funcionario Velson = new Diretor("Velson", "111", 111, Cargo.DIRETOR, 1);
+	
 
 		Menu menu = new Menu();
 		menu.Login();

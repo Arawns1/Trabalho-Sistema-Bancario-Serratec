@@ -7,6 +7,7 @@ import banco.TipoConta;
 import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
+import pessoas.funcionarios.Diretor;
 import pessoas.funcionarios.Funcionario;
 import pessoas.funcionarios.Gerente;
 
@@ -14,15 +15,6 @@ public class Menu {
 	Scanner sc = new Scanner(System.in);
 
 	public void mostrarLogo() {
-		/*
-		 * System.out.println("\r\n" +
-		 * " ██████  ███████  █████  ███  ██    █ █  █    \r\n" +
-		 * "██       ██       █   █ █   █ ███   █ █  █     \r\n" +
-		 * "██   ███ ██████   ████  █████ █ ██  █ ███       \r\n" +
-		 * "██    ██      ██  █   █ █   █ █  ██ █ █  █      \r\n" +
-		 * " ██████  ██████   ████  █   █ █   ███ █   █    \r\n");
-		 */
-
 		System.out.print("\r\n" + "██████████████████████████████████████████" + "\r\n"
 				+ "██      ██       █████████████████████████" + "\r\n" + "█  ███████  ███████ ██████████████████████"
 				+ "\r\n" + "█  ███   █      ███    ███    ██   ██ ██ █" + "\r\n"
@@ -30,14 +22,6 @@ public class Menu {
 				+ "\r\n" + "██████████████████████████████████████████" + "\r\n"
 				+ "███ O BANCO QUE IMPULSIONA SEUS SONHOS! ██" + "\r\n" + "██████████████████████████████████████████"
 				+ "\r\n");
-		/*
-		 * System.out.println("\r\n" +
-		 * "  ██████  ███████                           \r\n" +
-		 * " ██       ██       █                        \r\n" +
-		 * " ██   ███ ██████   ████   ████  ███  █  █       \r\n" +
-		 * " ██    ██      ██  █   █ █   █  █  █ ███        \r\n" +
-		 * "  ██████  ██████   ████   ███ █ █  █ █  █    \r\n");
-		 */
 	}
 
 	public void Login() {
@@ -184,7 +168,7 @@ public class Menu {
 				System.out.println("|-> Digite o CPF do destinatário (apenas números)");
 				System.out.print("| CPF: ");
 				String CPF = sc.next();
-				if (Banco.getListaCliente().containsKey(CPF) && !CPF.equals(contaLogada.getTitular().getCpf()) ) {
+				if (Banco.getListaCliente().containsKey(CPF) && !CPF.equals(contaLogada.getTitular().getCpf())) {
 					System.out.println("|-> Digite o valor da transferência");
 					System.out.print("| Valor: R$");
 					double valorTransferencia = sc.nextDouble();
@@ -212,7 +196,7 @@ public class Menu {
 		System.out.println("\t      RELATÓRIOS");
 		System.out.println("-".repeat(40));
 		System.out.println("|-> 1. Ver saldo e informações da conta");
-		
+
 		if (contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
 			System.out.println("|-> 2. Relatório de Tributações.");
 
@@ -232,9 +216,8 @@ public class Menu {
 			break;
 		case 2:
 			if (contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
-				((ContaCorrente)(contaLogada)).tirarRelatorioTaxa();
-			}
-			else {
+				((ContaCorrente) (contaLogada)).tirarRelatorioTaxa();
+			} else {
 				System.out.println("|-> Digite um valor para ser simulado ");
 				System.out.print("| Valor: R$ ");
 				double valor = sc.nextDouble();
@@ -242,8 +225,7 @@ public class Menu {
 				System.out.print("| Quantidade dias: ");
 				int dias = sc.nextInt();
 				System.out.println("+");
-				((ContaPoupanca)(contaLogada)).simularRendimento(valor, dias);
-				
+				((ContaPoupanca) (contaLogada)).simularRendimento(valor, dias);
 			}
 
 			break;
@@ -261,18 +243,26 @@ public class Menu {
 		switch (funcionario.getTipo()) {
 		case GERENTE:
 			int escolha = 0;
-		
 			System.out.println("|-> 1. Gerar Relatório Contas da Agencia");
 			System.out.println("|-> 2. Sair");
 			System.out.println("| Digite uma opção: ");
-			escolha= sc.nextInt();
-           if(escolha==1) {
-           ((Gerente)(funcionario)).gerarRelatorioNumeroContas();
-           }
-			
-		
+			escolha = sc.nextInt();
+			if (escolha == 1) {
+				((Gerente)(funcionario)).gerarRelatorioNumeroContas();
+			}
+			break;
 		case DIRETOR:
-			System.out.println("TU É DIRETOR");
+			System.out.println("|-> 1. Gerar Relatório Contas da Agencia");
+			System.out.println("|-> 2. Gerar Relatório todas as Contas");
+			System.out.println("| Digite uma opção: ");
+			escolha = sc.nextInt();
+			if (escolha == 1) {
+				((Gerente)(funcionario)).gerarRelatorioNumeroContas();
+			}
+			else if(escolha == 2){
+				((Diretor)(funcionario)).gerarRelatorioInfoClientes();
+			}
+			
 			break;
 		case PRESIDENTE:
 			System.out.println("TU É PRESIDENTE");

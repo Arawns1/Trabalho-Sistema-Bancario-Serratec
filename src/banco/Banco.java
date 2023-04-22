@@ -1,6 +1,9 @@
 package banco;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import contas.Conta;
 import pessoas.funcionarios.Funcionario;
@@ -17,8 +20,14 @@ public abstract class Banco {
 
 	public static Agencia getAgencia(int numAgencia) {
 		return null;
-
 	}
+	
+	public static void testeOrdernar() {
+		List<Conta> listaValores = new ArrayList(listaCliente.values());
+		Collections.sort(listaValores );
+	}
+	
+
 
 	public static void addNovaAgencia(Agencia agencia) {
 		// Em nossa classe principal (Sistema Bancario), criamos uma agencia e

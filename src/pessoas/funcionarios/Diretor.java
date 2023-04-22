@@ -1,5 +1,8 @@
 package pessoas.funcionarios;
 
+import banco.Agencia;
+import banco.Banco;
+
 public class Diretor extends Gerente{
 	
 	public Diretor(String nome, String cpf, int senha, Cargo tipo, int numeroAgencia) {
@@ -10,8 +13,17 @@ public class Diretor extends Gerente{
 		super(nome, cpf, senha, tipo);
 	}
 	
-	public void gerarRelatorioInfoClientes() {};
 	public void cadastrarGerente() {}
+	
+	public void gerarRelatorioInfoClientes() 
+	{
+		for(Integer a : Banco.getListaAgencias().keySet()) {
+			System.out.println(a + " : " + Banco.getListaAgencias().get(a).getContas());
+		}
+		
+		
+	};
+	
 	
 	
 	@Override

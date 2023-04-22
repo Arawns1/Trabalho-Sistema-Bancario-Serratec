@@ -33,6 +33,17 @@ public abstract class Conta {
 		agencia.addNovaConta(this);
 	}
 
+	public Conta(int numero, Pessoa titular, double saldo, Agencia agencia) {
+		super();
+		this.numero = numero;
+		this.titular = titular;
+		this.saldo = saldo;
+		this.agencia = agencia;
+		this.tipo = null;
+		Banco.getListaCliente().put(titular.getCpf(), this);
+		agencia.addNovaConta(this);
+	}
+
 	public void sacar(Double valor) {
 		if (valor > 0 && this.saldo >= valor) {
 			this.saldo -= valor;
@@ -61,8 +72,9 @@ public abstract class Conta {
 			momentoOperacao = LocalDateTime.now();
 			this.saldo -= valor;
 			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
-			System.out.println("| ✔ Trasferência realizada com sucesso");
 			contaDestino.saldo += valor;
+			contaDestino.getTransacoes().add(momentoOperacao.format(dtf) + " Recebeu R$" + valor);
+			System.out.println("| ✔ Trasferência realizada com sucesso");
 
 		} else {
 			System.out.println("| ❌ Saldo insuficiente para realizar a operação");
@@ -73,7 +85,8 @@ public abstract class Conta {
 		System.out.println("-".repeat(40));
 		System.out.println("\t\tEXTRATO");
 		System.out.println("" + "-".repeat(39));
-		System.out.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
+		System.out
+				.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
 		System.out.println("Gerado em: " + LocalDateTime.now().format(dtf));
 		System.out.println();
 		System.out.println("\tHORA\t  |  OPERAÇÃO  |  VALOR");
@@ -83,6 +96,32 @@ public abstract class Conta {
 		}
 		System.out.println("+" + "-".repeat(39));
 		System.out.println(" ".repeat(16) + " Saldo Final: R$" + String.format("%.2f", this.saldo));
+	}
+
+	public String tirarExtratoArquivo() {
+		String cabecalho = "-".repeat(40) 
+				+ "\n" + "\t\t EXTRATO" + "\n" 
+				+ "" + "-".repeat(40) 
+				+ "\n" + "Titular: "
+				+ this.getTitular().getNome() + "\n" + "Número da conta: " + this.getNumero() + "\t      Agencia: "
+				+ this.getAgencia().getNumero() 
+				+ "\n" + "Gerado em: " + LocalDateTime.now().format(dtf)+ "\n"
+				+ "\n\tHORA\t  |  OPERAÇÃO  |  VALOR" + "\n" 
+				+ "+" + "-".repeat(39) 
+				+ "\n";
+		String transacoesTxT = "";
+		
+		for(int i = 0; i < transacoes.size(); i++) {
+			transacoesTxT += transacoes.get(i) + "\n";
+		}
+					
+		String rodape = "\n" + "+" + "-".repeat(39) + "\n" + " ".repeat(16) + " Saldo Final: R$"
+				+ String.format("%.2f", this.saldo);
+		
+		
+
+		return cabecalho + transacoesTxT + rodape;
+
 	}
 
 	public int getNumero() {
@@ -135,8 +174,7 @@ public abstract class Conta {
 
 	@Override
 	public String toString() {
-		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + ", agencia="
-				+ agencia + "]";
+		return "Conta [numero=" + numero + ", titular=" + titular + ", NumeroAgencia=" + this.getAgencia().getNumero() + ", saldo=" + saldo +  "]";
 	}
 
 }

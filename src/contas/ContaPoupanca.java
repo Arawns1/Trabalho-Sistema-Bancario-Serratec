@@ -6,9 +6,9 @@ import pessoas.Pessoa;
 
 public class ContaPoupanca extends Conta{
 	
-	public ContaPoupanca(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {
-		super(numero, titular, saldo, tipo, agencia);
-		
+	public ContaPoupanca(int numero, Pessoa titular, double saldo, Agencia agencia) {
+		super(numero, titular, saldo, agencia);
+		this.tipo = TipoConta.CONTA_POUPANCA;
 	}
 
 	public final double TAXA_RENDIMENTO = 0.001;
@@ -19,7 +19,7 @@ public class ContaPoupanca extends Conta{
 	}
 	@Override
 	public String toString() {
-		return "ContaPoupanca [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
+		return "ContaPoupanca [numero=" + numero + ", titular=" + titular +", NumeroAgencia=" + this.getAgencia().getNumero() +  ", saldo=" + saldo + "]";
 	}
 	
 }

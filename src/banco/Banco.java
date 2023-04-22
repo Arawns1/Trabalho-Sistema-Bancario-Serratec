@@ -1,15 +1,19 @@
 package banco;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import contas.Conta;
 import pessoas.funcionarios.Funcionario;
 import pessoas.funcionarios.Presidente;
 
-public abstract class Banco implements Comparable {
+public abstract class Banco {
 	private static String nome;
 	private static Presidente presidente;
 	private static HashMap<String, Conta> listaCliente = new HashMap<String, Conta>();
@@ -17,21 +21,6 @@ public abstract class Banco implements Comparable {
 	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<Integer, Agencia>();
 	private static double saldoTotal;
 	private static int contadorAgencia = 0;
-	public static List<String> titularesContas = new ArrayList<String>();
-
-	public static Agencia getAgencia(int numAgencia) {
-		return null;
-	}
-
-	public static void testeHashMap() {
-		for (Integer i : listaAgencias.keySet()) {
-			for (Conta j : listaAgencias.get(i).getContas()) {
-				titularesContas.add(j.getTitular().getNome());
-			}
-		}
-		Collections.sort(titularesContas, String.CASE_INSENSITIVE_ORDER);
-		System.out.println(titularesContas);
-	}
 
 	public static void addNovaAgencia(Agencia agencia) {
 		// Em nossa classe principal (Sistema Bancario), criamos uma agencia e

@@ -16,25 +16,23 @@ import pessoas.funcionarios.Presidente;
 public class SistemaBancario {
 
 	public static void main(String[] args) {
-		Banco.setNome("G5 bank");
 		
-		Presidente P1 = new Presidente("Belson", "2", 234, Cargo.PRESIDENTE);
-		Gerente G1 = new Gerente("Elson", "1", 1, Cargo.GERENTE, 0);
+		Banco.setNome("G5 bank");
+
+		Presidente P1 = new Presidente("Belson", "2", 234);
+		Diretor Velson = new Diretor("Velson", "111", 111, 0);
+		
+		Gerente G1 = new Gerente("Elson", "1", 1, 0);
 		Agencia A1 = new Agencia(0, G1);
 		
-		Gerente G2 = new Gerente("Lelson", "1", 1, Cargo.GERENTE, 1);
+		Gerente G2 = new Gerente("Lelson", "1", 1, 1);
 		Agencia A2 = new Agencia(1, G2);
 
-		Pessoa p = new Cliente("Nelson", "1234", 1234, Cargo.CLIENTE);
-		ContaCorrente cc = new ContaCorrente(5463, p, 1020.1, TipoConta.CONTA_CORRENTE, A1);
+		Cliente p = new Cliente("Nelson", "1234", 1234);
+		ContaCorrente cc = new ContaCorrente(5463, p, 1020.1, A1);
 
-		Pessoa p2 = new Cliente("EPedro", "4321", 4321, Cargo.CLIENTE);
-		ContaPoupanca PP2 = new ContaPoupanca(5462, p2, 100, TipoConta.CONTA_POUPANCA, A2);
-
-		Funcionario Melson = new Gerente("Melson", "123", 123, Cargo.GERENTE, 0);
-		Funcionario Velson = new Diretor("Velson", "111", 111, Cargo.DIRETOR, 0);
-		
-		Banco.testeHashMap();
+		Cliente p2 = new Cliente("EPedro", "4321", 4321);
+		ContaPoupanca PP2 = new ContaPoupanca(5462, p2, 100, A2);
 		
 		Menu menu = new Menu();
 		menu.Login();

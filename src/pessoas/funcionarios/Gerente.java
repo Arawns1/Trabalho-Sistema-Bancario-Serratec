@@ -6,13 +6,15 @@ public class Gerente extends Funcionario {
 
 	private int numeroAgencia;
 
-	public Gerente(String nome, String cpf, int senha, Cargo tipo, int numeroAgencia) {
-		super(nome, cpf, senha, tipo);
+	public Gerente(String nome, String cpf, int senha, int numeroAgencia) {
+		super(nome, cpf, senha);
 		this.numeroAgencia = numeroAgencia;
+		this.tipo = Cargo.GERENTE;
 	}
 
-	public Gerente(String nome, String cpf, int senha, Cargo tipo) {
-		super(nome, cpf, senha, tipo);
+	public Gerente(String nome, String cpf, int senha) {
+		super(nome, cpf, senha);
+		this.tipo = Cargo.GERENTE;
 	}
 
 	public void gerarRelatorioNumeroContas() {
@@ -31,8 +33,7 @@ public class Gerente extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Gerente [numeroAgencia=" + numeroAgencia + ", nome=" + nome + ", cpf=" + cpf + ", senha=" + senha
-				+ ", tipo=" + tipo + "]";
+		return "Gerente [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + "]";
 	}
 
 }

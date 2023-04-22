@@ -17,6 +17,13 @@ public abstract class Pessoa {
 		this.senha = senha;
 		this.tipo = tipo;
 	}
+	public Pessoa(String nome, String cpf, int senha) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.senha = senha;
+		this.tipo = null;
+	}
 
 	public String getNome() {
 		return this.nome;

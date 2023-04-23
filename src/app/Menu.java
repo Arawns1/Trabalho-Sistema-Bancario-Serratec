@@ -318,7 +318,8 @@ public class Menu {
 			case 3:
 				break;
 
-			default:
+			default: 
+				System.out.println("|❌ Opção Inválida, tente novamente!");
 				break;
 			}
 

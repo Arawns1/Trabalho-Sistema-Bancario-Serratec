@@ -181,23 +181,29 @@ public class Menu {
 			System.out.println("|-> 4. Sair.");
 			System.out.println("+");
 			System.out.print("| Digite sua opção: ");
-			opcao = sc.nextInt();
-			switch (opcao) {
-			case 1:
-				movimentacoesContaCliente(contaLogada);
-				break;
-			case 2:
-				relatoriosContaCliente(contaLogada);
-				break;
-			case 3:
-				SeguroDeVida.contratarSeguro(contaLogada);
-				break;
-			case 4:
-				break;
-
-			default:
+			if(sc.hasNextInt()) {
+				opcao = sc.nextInt();	
+				switch (opcao) {
+				case 1:
+					movimentacoesContaCliente(contaLogada);
+					break;
+				case 2:
+					relatoriosContaCliente(contaLogada);
+					break;
+				case 3:
+					SeguroDeVida.contratarSeguro(contaLogada);
+					break;
+				case 4:
+					break;
+	
+				default:
+					System.out.println("|❌ Opção Inválida, tente novamente!");
+					break;
+				}
+			} else {
 				System.out.println("|❌ Opção Inválida, tente novamente!");
-				break;
+				sc.next();
+				continue;
 			}
 		} while (opcao != 4);
 	}

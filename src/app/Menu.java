@@ -61,7 +61,7 @@ public class Menu {
 				}
 				
 			} catch (Exception e) {
-				System.out.println("Teste erro 2");
+				System.out.println("Não foi possível continuar. Tente novamente!");
 				break;
 				// TODO: handle exception
 			}

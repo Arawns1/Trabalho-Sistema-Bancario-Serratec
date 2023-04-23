@@ -16,7 +16,6 @@ public abstract class Funcionario extends Pessoa{
 		this.tipo = null;
 	}
 
-	public void addNovaConta() {}
 
 	@Override
 	public String toString() {

@@ -19,13 +19,16 @@ public class Menu {
 	public static Scanner sc = new Scanner(System.in);
 
 	public static void mostrarLogo() {
-		System.out.print("\r\n" + " ████████████████████████████████████████ " + "\r\n"
-				+ "██      ██       █████████████████████████" + "\r\n" + "█  ███████  ███████ ██████████████████████"
-				+ "\r\n" + "█  ███   █      ███    ███    ██   ██ ██ █" + "\r\n"
-				+ "█  ████  ██████  ██ ███ █ ███ ██ ██ █   ██" + "\r\n" + "██      ██      ███    ███   █ █ ██ █ ██ █"
-				+ "\r\n" + "██████████████████████████████████████████" + "\r\n"
-				+ "███ O BANCO QUE IMPULSIONA SEUS SONHOS! ██" + "\r\n" + " ████████████████████████████████████████ "
-				+ "\r\n");
+		System.out.print("\r\n" 
+				+ " ████████████████████████████████████████ " + "\r\n"
+				+ "██      ██       █████████████████████████" + "\r\n" 
+				+ "█  ███████  ███████ ██████████████████████" + "\r\n" 
+				+ "█  ███   █      ███    ███    ██   ██ ██ █" + "\r\n"
+				+ "█  ████  ██████  ██ ███ █ ███ ██ ██ █   ██" + "\r\n" 
+				+ "██      ██      ███    ███   █ █ ██ █ ██ █" + "\r\n" 
+				+ "██████████████████████████████████████████" + "\r\n"
+				+ "███ O BANCO QUE IMPULSIONA SEUS SONHOS! ██" + "\r\n" 
+				+ " ████████████████████████████████████████ " + "\r\n");
 	}
 
 	public static void Login() {
@@ -34,61 +37,65 @@ public class Menu {
 			try {
 				LerArquivos.lerFuncionarios();
 			} catch (Exception e) {
-				System.out.println("Erro arquivo Funcionários");
+				System.out.println("| ❌ Erro ao ler o arquivo de Funcionários");
 			}
+
 			try {
 				LerArquivos.lerAgencias();
 			} catch (Exception e) {
-				System.out.println("Erro arquivo Agências");
+				System.out.println("| ❌ Erro ao ler o arquivo de Agências");
 			}
+
 			try {
 				LerArquivos.lerPessoas();
 			} catch (Exception e) {
-
-				System.out.println("Erro arquivo Pessoas");
+				System.out.println("| ❌ Erro ao ler o arquivo de Pessoas");
 			}
+
 			try {
 				LerArquivos.atualizarSaldos();
 			} catch (Exception e) {
-
-				System.out.println("Erro Arquivo Atualizar Saldos");
+				System.out.println("| ❌ Erro ao ler o Arquivo de Pessoas");
 			}
 
 			mostrarLogo();
 			System.out.println("-".repeat(40));
 			System.out.println("\tBEM-VINDO(A) AO G5 BANK");
 			System.out.println("-".repeat(40));
-
 			System.out.println("|-> 1. Clientes");
 			System.out.println("|-> 2. Painel Administrativo");
 			System.out.print("| Digite uma Opção: ");
-			try
-
-			{
-
+			
+			if(sc.hasNextInt()) {
 				escolha = sc.nextInt();
-				if (escolha == 1) {
-					fazerLoginCliente();
-				} else if (escolha == 2) {
-					fazerLoginAdministrativo();
-				} else {
-					System.out.println("|❌ Opção Inválida, tente novamente!");
-				}
-
-			} catch (Exception e) {
-				System.out.println("Não foi possível continuar. Tente novamente!");
-				break;
-				// TODO: handle exception
 			}
-
+			else {
+				  System.out.println("| ❌ Opção Inválida, tente novamente!");
+				  sc.next();
+				  continue;
+			}
+			
+			switch (escolha) {
+			case 1:
+				fazerLoginCliente();
+				break;
+			case 2:
+				fazerLoginAdministrativo();
+				break;
+			default:
+				System.out.println("| ❌ Opção Inválida, tente novamente!");
+				break;
+			}
 			System.out.println("=".repeat(40));
 			System.out.println(" Obrigado por utilizar nossos serviços!");
 			System.out.println("\t\tG5 BANK ©");
 			System.out.println("=".repeat(40));
+
 			try {
 				EscreverArquivos.escreverClientes();
 				EscreverArquivos.escreverFuncionarios();
 			} catch (Exception e) {
+				System.out.println("| ❌ Não foi possível salvar funcionarios e clientes");
 				e.printStackTrace();
 			}
 		} while (escolha != 1 || escolha != 2);
@@ -99,18 +106,15 @@ public class Menu {
 		System.out.println("\t    LOGIN CLIENTES");
 		System.out.println("-".repeat(40));
 		// Pegando dados do Cliente
-
-		try {
 			System.out.println("FAÇA LOGIN ");
 			System.out.println("|-> Digite seu CPF (apenas números) ");
 			System.out.print("| CPF: ");
 			String cpf = sc.next();
 			System.out.println("|-> Digite sua Senha: ");
 			System.out.print("| Senha: ");
-			int senha = sc.nextInt();
-
-			try {
-
+			
+			if(sc.hasNextInt()) {
+				int senha = sc.nextInt();
 				// Verificando na listaCliente se ela contém o CPF e se a Senha digitada está
 				// correta.
 				if (Banco.getListaCliente().containsKey(cpf)) {
@@ -122,17 +126,12 @@ public class Menu {
 				} else {
 					System.out.println("|⚠ CPF não identificado");
 				}
-
-			} catch (Exception e) {
-				System.out.println("Erro teste");
 			}
-
-		} catch (Exception e) {
-			System.out.println("| Digite um valor válido!");
-			System.out.println("| CPF e SENHA deve ser numéricos ");
-
-		}
-
+			else {
+				System.out.println("| ⚠ Digite um valor válido!");
+				System.out.println("| ⚠ CPF e SENHA deve ser numéricos ");
+				sc.next();
+			}
 	}
 
 	public static void fazerLoginAdministrativo() {
@@ -146,16 +145,25 @@ public class Menu {
 		String cpf = sc.next();
 		System.out.println("|-> Digite sua Senha: ");
 		System.out.print("| Senha: ");
-		int senha = sc.nextInt();
-		if (Banco.getListaFuncionarios().containsKey(cpf)) {
-			if (Banco.getListaFuncionarios().get(cpf).getSenha() == senha) {
-				mostrarOpcoesFuncionarios(Banco.getListaFuncionarios().get(cpf));
+		
+		if(sc.hasNextInt()) {
+			int senha = sc.nextInt();
+			if (Banco.getListaFuncionarios().containsKey(cpf)) {
+				if (Banco.getListaFuncionarios().get(cpf).getSenha() == senha) {
+					mostrarOpcoesFuncionarios(Banco.getListaFuncionarios().get(cpf));
+				} else {
+					System.out.println("Senha incorreta!");
+				}
 			} else {
-				System.out.println("Senha incorreta!");
+				System.out.println("CPF não identificado");
 			}
-		} else {
-			System.out.println("CPF não identificado");
 		}
+		else {
+			System.out.println("| ⚠ Digite um valor válido!");
+			System.out.println("| ⚠ CPF e SENHA deve ser numéricos ");
+			sc.next();
+		}
+		
 	}
 
 	public static void mostrarOpcoesClientes(Conta contaLogada) {

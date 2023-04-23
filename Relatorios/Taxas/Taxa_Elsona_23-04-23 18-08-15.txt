@@ -1,0 +1,4 @@
+Total gasto com taxas de saque: R$0,10
+Total gasto com taxas de depósito: R$0,10
+Total gasto com taxas de transferência: R$0,20
+O somatório total das taxas: R$0,40

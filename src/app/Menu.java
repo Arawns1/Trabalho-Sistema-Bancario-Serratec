@@ -297,23 +297,23 @@ public class Menu {
 				System.out.println("| Sua Agência é: " + contaLogada.getAgencia().getNumero());
 				System.out.println("| O número da sua conta é: " + contaLogada.getNumero());
 
-				System.out.println("|-> Deseja salvar esse relatório? (y/n) ");
-				System.out.print("| Sua escolha: ");
-				String escolha2 = sc.next();
-
-				if (escolha2.equalsIgnoreCase("y")) {
-					try {
-						EscreverArquivos.gerarRelatorioTaxas(contaLogada);
-						System.out.println("| ✔ Arquivo gerado com sucesso! ");
-					} catch (IOException e) {
-						System.out.println("| ❌ Não foi possivel gerar o arquivo.");
-						System.out.println("| Erro:" + e.getMessage());
-					}
-				}
 				break;
 			case 2:
 				if (contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
 					((ContaCorrente) (contaLogada)).tirarRelatorioTaxa();
+					System.out.println("|-> Deseja salvar esse relatório? (y/n) ");
+					System.out.print("| Sua escolha: ");
+					String escolha3 = sc.next();
+					if (escolha3.equalsIgnoreCase("y")) {
+						try {
+							EscreverArquivos.gerarRelatorioTaxas(contaLogada);
+							System.out.println("| ✔ Arquivo gerado com sucesso! ");
+						} catch (IOException e) {
+							System.out.println("| ❌ Não foi possivel gerar o arquivo.");
+							System.out.println("| Erro:" + e.getMessage());
+						}
+					}
+					
 				} else {
 					System.out.println("|-> Digite um valor para ser simulado ");
 					System.out.print("| Valor: R$ ");

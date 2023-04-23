@@ -69,7 +69,8 @@ public class EscreverArquivos {
 	}
 
 	public static void gerarRelatorioClientesDiretor() throws IOException {
-		String path = ".//Relatorios//RelatorioDiretor.txt";
+		
+		String path = ".//Relatorios//"+ dtf.format(LocalDateTime.now()) + " RelatorioContasDiretor.txt";
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
 		buffWrite.write(Diretor.gerarRelatorioInfoClientesArquivo());
 		buffWrite.newLine();

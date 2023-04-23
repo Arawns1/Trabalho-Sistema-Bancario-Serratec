@@ -1,4 +1,12 @@
  Nome | CPF | NumAgencia | Gerente
-Ilson,1234,0,Elson
-Kelson,4321,1,Pedro
+Carlos,8765,1,Pedro
+Elsona,4321,0,Elson
+Fernanda,6789,1,Pedro
+Guilherme,7890,0,Elson
+Júlia,2345,1,Pedro
+Kelson,1234,1,Pedro
+Mateus,9012,0,Elson
+Pedro,3456,1,Pedro
+Victor,5678,1,Pedro
+Vilson,0000,0,Elson
 

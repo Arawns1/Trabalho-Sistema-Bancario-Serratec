@@ -1,9 +1,11 @@
  package contas;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import banco.Agencia;
 import banco.TipoConta;
+import banco.utils.EscreverArquivos;
 import pessoas.Pessoa;
 
 public class ContaCorrente extends Conta {
@@ -30,6 +32,11 @@ public class ContaCorrente extends Conta {
 			totalTaxaTransferencia += TAXA_TRANSFERENCIA;
 			contaDestino.getTransacoes().add(momentoOperacao.format(dtf) + " Recebeu R$" + valor);
 			contaDestino.saldo += valor;
+			try {
+				EscreverArquivos.listaTransacoes(contaDestino);
+			} catch (IOException e) {
+				System.out.println("| ❌ Não foi possível gerar o extrato da conta destino");
+			}
 			System.out.println("| ✔ Trasferência realizada com sucesso");
 		} else {
 			System.out.println("| ❌ Saldo insuficiente para realizar a operação");

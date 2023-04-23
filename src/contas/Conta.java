@@ -1,6 +1,7 @@
 
 package contas;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 import banco.Agencia;
 import banco.Banco;
 import banco.TipoConta;
+import banco.utils.EscreverArquivos;
 import pessoas.Pessoa;
 
 public abstract class Conta {
@@ -62,6 +64,11 @@ public abstract class Conta {
 			transacoes.add(momentoOperacao.format(dtf) + " Transferiu R$" + valor);
 			contaDestino.saldo += valor;
 			contaDestino.getTransacoes().add(momentoOperacao.format(dtf) + " Recebeu R$" + valor);
+			try {
+				EscreverArquivos.listaTransacoes(contaDestino);
+			} catch (IOException e) {
+				System.out.println("| ❌ Não foi possível gerar o extrato da conta destino");
+			}
 			System.out.println("| ✔ Trasferência realizada com sucesso");
 
 		} else {
@@ -73,8 +80,7 @@ public abstract class Conta {
 		System.out.println("-".repeat(40));
 		System.out.println("\t\tEXTRATO");
 		System.out.println("" + "-".repeat(39));
-		System.out
-				.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
+		System.out.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
 		System.out.println("Gerado em: " + LocalDateTime.now().format(dtf));
 		System.out.println();
 		System.out.println("\tHORA\t  |  OPERAÇÃO  |  VALOR");

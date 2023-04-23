@@ -14,19 +14,11 @@ public abstract class SeguroDeVida {
 		double valor = sc.nextDouble();
 		double entrada = valor * 0.2;
 		if (conta.getSaldo() > entrada) {
-		
-
 		conta.setSaldo(conta.getSaldo() - entrada);
 		System.out.println("| ✔ Seguro no valor de R$" + valor + " contratado com sucesso!");
-		
-		
-
 	}
 		else {
 			System.out.println("| ❌ Saldo insuficiente para contratar o seguro!");
 		}
-
-	
-
 	}
 }

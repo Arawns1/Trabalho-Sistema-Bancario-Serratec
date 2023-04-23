@@ -35,58 +35,64 @@ public class Menu {
 				LerArquivos.lerFuncionarios();
 			} catch (Exception e) {
 				System.out.println("Erro arquivo Funcionários");
-			} 
+			}
 			try {
 				LerArquivos.lerAgencias();
-		} catch (Exception e) {
-			System.out.println("Erro arquivo Agências");
-		} try
+			} catch (Exception e) {
+				System.out.println("Erro arquivo Agências");
+			}
+			try {
 				LerArquivos.lerPessoas();
-	   }catch(
+			} catch (Exception e) {
 
-	Exception e)
-	{
-		System.out.println("Erro aqrquivo Pessoas");
-	}
+				System.out.println("Erro arquivo Pessoas");
+			}
+			try {
+				LerArquivos.atualizarSaldos();
+			} catch (Exception e) {
 
-	LerArquivos.atualizarSaldos();}catch(Exception e)
-	{
 				System.out.println("Erro Arquivo Atualizar Saldos");
 			}
 
-	mostrarLogo();System.out.println("-".repeat(40));System.out.println("\tBEM-VINDO(A) AO G5 BANK");System.out.println("-".repeat(40));
+			mostrarLogo();
+			System.out.println("-".repeat(40));
+			System.out.println("\tBEM-VINDO(A) AO G5 BANK");
+			System.out.println("-".repeat(40));
 
-	System.out.println("|-> 1. Clientes");System.out.println("|-> 2. Painel Administrativo");System.out.print("| Digite uma Opção: ");try
+			System.out.println("|-> 1. Clientes");
+			System.out.println("|-> 2. Painel Administrativo");
+			System.out.print("| Digite uma Opção: ");
+			try
 
-	{
+			{
 
-		escolha = sc.nextInt();
-		if (escolha == 1) {
-			fazerLoginCliente();
-		} else if (escolha == 2) {
-			fazerLoginAdministrativo();
-		} else {
-			System.out.println("|❌ Opção Inválida, tente novamente!");
-		}
+				escolha = sc.nextInt();
+				if (escolha == 1) {
+					fazerLoginCliente();
+				} else if (escolha == 2) {
+					fazerLoginAdministrativo();
+				} else {
+					System.out.println("|❌ Opção Inválida, tente novamente!");
+				}
 
-	}catch(
-	Exception e)
-	{
-		System.out.println("Não foi possível continuar. Tente novamente!");
-		break;
-		// TODO: handle exception
-	}
+			} catch (Exception e) {
+				System.out.println("Não foi possível continuar. Tente novamente!");
+				break;
+				// TODO: handle exception
+			}
 
-	System.out.println("=".repeat(40));System.out.println(" Obrigado por utilizar nossos serviços!");System.out.println("\t\tG5 BANK ©");System.out.println("=".repeat(40));try
-	{
-		EscreverArquivos.escreverClientes();
-		EscreverArquivos.escreverFuncionarios();
-	}catch(
-	Exception e)
-	{
+			System.out.println("=".repeat(40));
+			System.out.println(" Obrigado por utilizar nossos serviços!");
+			System.out.println("\t\tG5 BANK ©");
+			System.out.println("=".repeat(40));
+			try {
+				EscreverArquivos.escreverClientes();
+				EscreverArquivos.escreverFuncionarios();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-	}while(escolha!=1||escolha!=2);}
+		} while (escolha != 1 || escolha != 2);
+	}
 
 	public static void fazerLoginCliente() {
 		System.out.println("-".repeat(40));

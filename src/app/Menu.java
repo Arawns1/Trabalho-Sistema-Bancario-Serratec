@@ -168,6 +168,7 @@ public class Menu {
 
 	public static void mostrarOpcoesClientes(Conta contaLogada) {
 		int opcao = 0;
+		boolean sair = false;
 		do {
 			System.out.println("-".repeat(40));
 			System.out.println("\t   MENU PRINCIPAL");
@@ -177,8 +178,13 @@ public class Menu {
 			System.out.println("| O que deseja fazer?");
 			System.out.println("|-> 1. Movimentações na conta.");
 			System.out.println("|-> 2. Relatórios.");
-			System.out.println("|-> 3. Contratar seguro.");
-			System.out.println("|-> 4. Sair.");
+			if(contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
+				System.out.println("|-> 3. Contratar seguro.");
+				System.out.println("|-> 4. Sair.");
+			}
+			else {
+				System.out.println("|-> 3. Sair.");
+			}
 			System.out.println("+");
 			System.out.print("| Digite sua opção: ");
 			if(sc.hasNextInt()) {
@@ -191,11 +197,24 @@ public class Menu {
 					relatoriosContaCliente(contaLogada);
 					break;
 				case 3:
-					SeguroDeVida.contratarSeguro(contaLogada);
-					break;
+					if(contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
+						SeguroDeVida.contratarSeguro(contaLogada);
+						break;
+					}
+					else {
+						sair = true;
+						break;
+					}
 				case 4:
-					break;
-	
+					if(contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
+						sair = true;
+						break;
+					}
+					else {
+						System.out.println("|❌ Opção Inválida, tente novamente!");
+						break;
+					}
+					
 				default:
 					System.out.println("|❌ Opção Inválida, tente novamente!");
 					break;
@@ -205,7 +224,7 @@ public class Menu {
 				sc.next();
 				continue;
 			}
-		} while (opcao != 4);
+		} while (sair != true);
 	}
 
 	public static void movimentacoesContaCliente(Conta contaLogada) {

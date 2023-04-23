@@ -9,7 +9,10 @@ import banco.utils.EscreverArquivos;
 import pessoas.Pessoa;
 
 public class ContaCorrente extends Conta {
-
+	
+	private boolean possuiSeguro = false;
+	private double valorSeguro;
+	
 	public static final double TAXA_SAQUE = 0.10;
 	public static final double TAXA_DEPOSITO = 0.10;
 	public static final double TAXA_TRANSFERENCIA = 0.20;
@@ -74,17 +77,24 @@ public class ContaCorrente extends Conta {
 	public void tirarRelatorioTaxa() {
 		System.out.println("| Total gasto com taxas de saque: R$" + String.format("%.2f", this.totalTaxaSaque));
 		System.out.println("| Total gasto com taxas de depósito: R$" + String.format("%.2f", this.totalTaxaDeposito));
-		System.out.println(
-				"| Total gasto com taxas de transferência: R$" + String.format("%.2f", this.totalTaxaTransferencia));
-		System.out.println("| O somatório total das taxas: R$"
-				+ String.format("%.2f", (this.totalTaxaSaque + this.totalTaxaDeposito + this.totalTaxaTransferencia)));
+		System.out.println("| Total gasto com taxas de transferência: R$" + String.format("%.2f", this.totalTaxaTransferencia));
+		System.out.println("| O somatório total das taxas: R$"+ String.format("%.2f", (this.totalTaxaSaque + this.totalTaxaDeposito + this.totalTaxaTransferencia)));
+		if(this.possuiSeguro == true) {
+			System.out.println("| O valor do seu seguro é: " + this.valorSeguro);
+		}
 	}
 	
 	public String tirarRelatorioTaxasArquivo() {
+		String textoSeguro = "";
+		if(this.possuiSeguro == true) {
+			textoSeguro = "O valor do seu seguro é: " + this.valorSeguro;
+		}
 		return "Total gasto com taxas de saque: R$" + String.format("%.2f", this.totalTaxaSaque) + 
  		  "\n" + "Total gasto com taxas de depósito: R$" + String.format("%.2f", this.totalTaxaDeposito) +
  		  "\n" + "Total gasto com taxas de transferência: R$" + String.format("%.2f", this.totalTaxaTransferencia) +
- 		  "\n" +  "O somatório total das taxas: R$" + String.format("%.2f", (this.totalTaxaSaque + this.totalTaxaDeposito + this.totalTaxaTransferencia));
+ 		  "\n" +  "O somatório total das taxas: R$" + String.format("%.2f", (this.totalTaxaSaque + this.totalTaxaDeposito + this.totalTaxaTransferencia))+
+ 		  "\n" + textoSeguro;
+		
 	}
 	
 
@@ -110,6 +120,22 @@ public class ContaCorrente extends Conta {
 
 	public void setTotalTaxaTransferencia(double totalTaxaTransferencia) {
 		this.totalTaxaTransferencia = totalTaxaTransferencia;
+	}
+
+	public boolean possuiSeguro() {
+		return possuiSeguro;
+	}
+
+	public void setPossuiSeguro(boolean possuiSeguro) {
+		this.possuiSeguro = possuiSeguro;
+	}
+
+	public double getValorSeguro() {
+		return valorSeguro;
+	}
+
+	public void setValorSeguro(double valorSeguro) {
+		this.valorSeguro = valorSeguro;
 	}
 
 	@Override

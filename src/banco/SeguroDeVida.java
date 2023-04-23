@@ -3,6 +3,7 @@ package banco;
 import java.util.Scanner;
 
 import contas.Conta;
+import contas.ContaCorrente;
 
 public abstract class SeguroDeVida {
 	public static void contratarSeguro(Conta conta) {
@@ -15,6 +16,8 @@ public abstract class SeguroDeVida {
 		double entrada = valor * 0.2;
 		if (conta.getSaldo() > entrada) {
 		conta.setSaldo(conta.getSaldo() - entrada);
+		((ContaCorrente)(conta)).setPossuiSeguro(true);
+		((ContaCorrente)(conta)).setValorSeguro(valor);
 		System.out.println("| ✔ Seguro no valor de R$" + valor + " contratado com sucesso!");
 	}
 		else {

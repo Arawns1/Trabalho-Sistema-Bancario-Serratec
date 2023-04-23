@@ -16,7 +16,12 @@ import pessoas.funcionarios.Gerente;
 import pessoas.funcionarios.Presidente;
 
 public class LerArquivos {
-	
+	/**
+	 * Essa função deve ser capaz de ler os clientes do arquivo txt ListaClientes,
+	 * armazenar as informações nas variáveis e dependendendo do tipo da conta (Corrente ou Poupança)
+	 * Irá instanciar uma nova conta.
+	 * @throws IOException
+	 */
 	public static void lerPessoas() throws IOException {
 		String path = ".//Relatorios//ListaClientes.txt";
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
@@ -60,8 +65,16 @@ public class LerArquivos {
 		}
 		buffRead.close();
 	}
-	
+
+	/** 
+	 * A função ler funcionários deve acessar o caminho do path, ler todos os
+	 * funcionarios da lista e aramazenar nas variáveis. Então, as variáveis serão
+	 * utilizadas para instanciar os funcionarios de acordo. Com seus respectivos
+	 * cargos.
+	 * @throws IOException
+	 */
 	public static void lerFuncionarios() throws IOException {
+		
 		String path = ".//Relatorios//ListaFuncionarios.txt";
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
 		String linha = "";
@@ -99,6 +112,11 @@ public class LerArquivos {
 		buffRead.close();
 	}
 	
+	/**
+	 * Essa função deve ser capaz de ler as agencias do arquivo txt e instanciá-las
+	 * no sistema
+	 * @throws IOException
+	 */
 	public static void lerAgencias() throws IOException {
 		String path = ".//Relatorios//Agencias.txt";
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
@@ -124,10 +142,18 @@ public class LerArquivos {
 		buffRead.close();
 	}
 	
+	/**
+	 * Esta função é responsável por pegar os saldos atualziados dos clientes e 
+	 * inserir nos devidos clientes 
+	 * @throws IOException
+	 */
 	public static void atualizarSaldos() throws IOException {
+		
+		
 		String path = ".//Relatorios//ListaClientes.txt";
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
 		String linha = "";
+		
 		while (true) {
 			linha = buffRead.readLine();
 			if (linha != null) {

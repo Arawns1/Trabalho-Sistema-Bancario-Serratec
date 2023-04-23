@@ -41,16 +41,15 @@ public class Menu {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			mostrarLogo();
-			System.out.println("-".repeat(40));
-			System.out.println("\tBEM-VINDO(A) AO G5 BANK");
-			System.out.println("-".repeat(40));
-
-			System.out.println("|-> 1. Clientes");
-			System.out.println("|-> 2. Painel Administrativo");
-			System.out.print("| Digite uma Opção: ");
+			
 			try {
-				
+				mostrarLogo();
+				System.out.println("-".repeat(40));
+				System.out.println("\tBEM-VINDO(A) AO G5 BANK");
+				System.out.println("-".repeat(40));
+				System.out.println("|-> 1. Clientes");
+				System.out.println("|-> 2. Painel Administrativo");
+				System.out.print("| Digite uma Opção: ");
 				escolha = sc.nextInt();
 				if (escolha == 1) {
 					fazerLoginCliente();
@@ -61,15 +60,16 @@ public class Menu {
 				}
 				
 			} catch (Exception e) {
+				escolha = 0;
 				System.out.println("Não foi possível continuar. Tente novamente!");
 				break;
-				// TODO: handle exception
 			}
 			
 			System.out.println("=".repeat(40));
 			System.out.println(" Obrigado por utilizar nossos serviços!");
 			System.out.println("\t\tG5 BANK ©");
 			System.out.println("=".repeat(40));
+			
 			try {
 				EscreverArquivos.escreverClientes();
 				EscreverArquivos.escreverFuncionarios();

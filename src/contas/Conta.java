@@ -22,17 +22,6 @@ public abstract class Conta {
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
 	LocalDateTime momentoOperacao;
 
-	public Conta(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencia agencia) {
-		super();
-		this.numero = numero;
-		this.titular = titular;
-		this.saldo = saldo;
-		this.tipo = tipo;
-		this.agencia = agencia;
-		Banco.getListaCliente().put(titular.getCpf(), this);
-		agencia.addNovaConta(this);
-	}
-
 	public Conta(int numero, Pessoa titular, double saldo, Agencia agencia) {
 		super();
 		this.numero = numero;
@@ -40,8 +29,7 @@ public abstract class Conta {
 		this.saldo = saldo;
 		this.agencia = agencia;
 		this.tipo = null;
-		Banco.getListaCliente().put(titular.getCpf(), this);
-		agencia.addNovaConta(this);
+		
 	}
 
 	public void sacar(Double valor) {
@@ -174,7 +162,7 @@ public abstract class Conta {
 
 	@Override
 	public String toString() {
-		return "Conta [numero=" + numero + ", titular=" + titular + ", NumeroAgencia=" + this.getAgencia().getNumero() + ", saldo=" + saldo +  "]";
+		return "Conta," + numero + "," + titular + "," + this.getAgencia().getNumero() + "," + saldo;
 	}
 
 }

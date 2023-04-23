@@ -21,7 +21,6 @@ public class Diretor extends Gerente{
 		this.tipo = Cargo.DIRETOR;
 	}
 	
-	public void cadastrarGerente() {}
 	
 	public void gerarRelatorioInfoClientes() 
 	{
@@ -81,9 +80,8 @@ public class Diretor extends Gerente{
 				+ clientesTXT;
 	};
 	
-	
 	@Override
 	public String toString() {
-		return "Diretor [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + "]";
+		return "Diretor," + nome + "," + cpf + "," + senha;
 	}
 }

@@ -1,41 +1,12 @@
 package app;
 
-import banco.Agencia;
 import banco.Banco;
-import banco.TipoConta;
-import contas.ContaCorrente;
-import contas.ContaPoupanca;
-import pessoas.Cliente;
-import pessoas.Pessoa;
-import pessoas.funcionarios.Cargo;
-import pessoas.funcionarios.Diretor;
-import pessoas.funcionarios.Funcionario;
-import pessoas.funcionarios.Gerente;
-import pessoas.funcionarios.Presidente;
 
 public class SistemaBancario {
 
 	public static void main(String[] args) {
-		
 		Banco.setNome("G5 bank");
-
-		Presidente P1 = new Presidente("Belson", "2", 234);
-		Diretor Velson = new Diretor("Velson", "111", 111, 0);
-		
-		Gerente G1 = new Gerente("Elson", "1", 1, 0);
-		Agencia A1 = new Agencia(0, G1);
-		
-		Gerente G2 = new Gerente("Lelson", "1", 1, 1);
-		Agencia A2 = new Agencia(1, G2);
-
-		Cliente p = new Cliente("Ilson", "1234", 1234);
-		ContaCorrente cc = new ContaCorrente(5463, p, 1020.1, A1);
-
-		Cliente p2 = new Cliente("Kelson", "4321", 4321);
-		ContaPoupanca PP2 = new ContaPoupanca(5462, p2, 100, A2);
-		
-		Menu menu = new Menu();
-		menu.Login();
+		Menu.Login();
 	}
 
 	/*

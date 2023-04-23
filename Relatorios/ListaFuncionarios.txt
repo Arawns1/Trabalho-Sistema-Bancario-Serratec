@@ -1,3 +1,4 @@
-Diretor [nome=Velson, cpf=111, senha=111]
-Gerente [nome=Lelson, cpf=1, senha=1]
-Presidente [nome=Belson, cpf=2, senha=234]
+Diretor,Velson,111,111
+Gerente,Elson,1,1
+Presidente,Belson,2,234
+Gerente,Pedro,123432,3122312

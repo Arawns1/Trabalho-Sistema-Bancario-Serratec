@@ -5,9 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import banco.Banco;
-import banco.TipoConta;
 import contas.Conta;
 import contas.ContaCorrente;
 import pessoas.funcionarios.Diretor;
@@ -32,6 +30,16 @@ public class EscreverArquivos {
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
 		for (String func : Banco.getListaFuncionarios().keySet()) {
 			buffWrite.write(Banco.getListaFuncionarios().get(func).toString());
+			buffWrite.newLine();
+		}
+		buffWrite.close();
+	}
+	
+	public static void escreverAgencias() throws IOException {
+		String path = ".//Relatorios//Agencias.txt";
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
+		for (int numAgencia : Banco.getListaAgencias().keySet()) {
+			buffWrite.write(Banco.getListaAgencias().get(numAgencia).toString());
 			buffWrite.newLine();
 		}
 		buffWrite.close();

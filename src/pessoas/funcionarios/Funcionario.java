@@ -20,7 +20,7 @@ public abstract class Funcionario extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + ", tipo=" + tipo + "]";
+		return "Funcionario," + nome + "," + cpf + "," + senha + "," + tipos;
 	}
 
 }

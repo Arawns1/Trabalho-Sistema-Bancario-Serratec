@@ -30,9 +30,9 @@ public class ContaCorrente extends Conta {
 			totalTaxaTransferencia += TAXA_TRANSFERENCIA;
 			contaDestino.getTransacoes().add(momentoOperacao.format(dtf) + " Recebeu R$" + valor);
 			contaDestino.saldo += valor;
-			System.out.println(" ✔ Trasferência realizada com sucesso");
+			System.out.println("| ✔ Trasferência realizada com sucesso");
 		} else {
-			System.out.println(" ❌ Saldo insuficiente para realizar a operação");
+			System.out.println("| ❌ Saldo insuficiente para realizar a operação");
 		}
 	}
 
@@ -107,7 +107,7 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public String toString() {
-		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", NumeroAgencia=" + this.getAgencia().getNumero() + ", saldo=" + saldo + "]";
+		return "ContaCorrente," + numero + "," + titular + "," + this.getAgencia().getNumero() + "," + saldo;
 	}
 
 }

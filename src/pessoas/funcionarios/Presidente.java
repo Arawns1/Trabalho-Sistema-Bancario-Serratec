@@ -1,9 +1,10 @@
 package pessoas.funcionarios;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
+import banco.Agencia;
 import banco.Banco;
+import banco.utils.EscreverArquivos;
 import contas.Conta;
 
 public class Presidente extends Diretor {
@@ -13,6 +14,22 @@ public class Presidente extends Diretor {
 		this.tipo = Cargo.PRESIDENTE;
 	}
 
+	public void cadastrarAgencia(){
+		System.out.print("|-> Digite o nome do gerente: ");
+		String nome = sc.next();
+		System.out.print("|-> Digite o CPF: ");
+		String cpf = sc.next();
+		System.out.println("|-> Digite a Senha: ");
+		int senha = sc.nextInt();
+		Agencia a1 = new Agencia(new Gerente(nome, cpf, senha));
+		Banco.getListaAgencias().put(Banco.getContadorAgencia(), a1);
+		try {
+			EscreverArquivos.escreverAgencias();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void gerarRelatorioCapitalTotal() {
 		double saldoTotal = 0;
 		for (Integer i : Banco.getListaAgencias().keySet()) {
@@ -26,7 +43,7 @@ public class Presidente extends Diretor {
 
 	@Override
 	public String toString() {
-		return "Presidente [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + "]";
+		return "Presidente," + nome + "," + cpf + "," + senha;
 	}
 	
 	

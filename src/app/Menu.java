@@ -1,9 +1,7 @@
 package app;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-
 import banco.Banco;
 import banco.SeguroDeVida;
 import banco.TipoConta;
@@ -18,8 +16,8 @@ import pessoas.funcionarios.Gerente;
 import pessoas.funcionarios.Presidente;
 
 public class Menu {
-	Scanner sc = new Scanner(System.in);
-	public void mostrarLogo() {
+	public static Scanner sc = new Scanner(System.in);
+	public static void mostrarLogo() {
 		System.out.print("\r\n" + " ████████████████████████████████████████ " + "\r\n"
 								+ "██      ██       █████████████████████████" + "\r\n"  
 								+ "█  ███████  ███████ ██████████████████████" + "\r\n"
@@ -32,13 +30,16 @@ public class Menu {
 								+ "\r\n");
 	}
 	
-	public void Login() {
+	public static void Login() {
 		int escolha = 0;
 		do {
 			try {
+				LerArquivos.lerFuncionarios();
+				LerArquivos.lerAgencias();
+				LerArquivos.lerPessoas();
 				LerArquivos.atualizarSaldos();
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			mostrarLogo();
 			System.out.println("-".repeat(40));
@@ -68,10 +69,9 @@ public class Menu {
 				e.printStackTrace();
 			}
 		} while (escolha != 1 || escolha != 2);
-
 	}
 
-	public void fazerLoginCliente() {
+	public static void fazerLoginCliente() {
 		System.out.println("-".repeat(40));
 		System.out.println("\t    LOGIN CLIENTES");
 		System.out.println("-".repeat(40));
@@ -84,8 +84,6 @@ public class Menu {
 		System.out.print("| Senha: ");
 		int senha = sc.nextInt();
 
-		// Verificando na listaCliente se ela contém o CPF e se a Senha digitada está
-		// correta.
 		if (Banco.getListaCliente().containsKey(cpf)) {
 			if (Banco.getListaCliente().get(cpf).getTitular().getSenha() == senha) {
 				mostrarOpcoesClientes(Banco.getListaCliente().get(cpf));
@@ -97,7 +95,7 @@ public class Menu {
 		}
 	}
 
-	public void fazerLoginAdministrativo() {
+	public static void fazerLoginAdministrativo() {
 		System.out.println("-".repeat(40));
 		System.out.println("\t  LOGIN ADMINISTRATIVO");
 		System.out.println("-".repeat(40));
@@ -111,7 +109,6 @@ public class Menu {
 		int senha = sc.nextInt();
 		if (Banco.getListaFuncionarios().containsKey(cpf)) {
 			if (Banco.getListaFuncionarios().get(cpf).getSenha() == senha) {
-				System.out.println("Acesso Permitido!");
 				mostrarOpcoesFuncionarios(Banco.getListaFuncionarios().get(cpf));
 			} else {
 				System.out.println("Senha incorreta!");
@@ -121,7 +118,7 @@ public class Menu {
 		}
 	}
 
-	public void mostrarOpcoesClientes(Conta contaLogada) {
+	public static void mostrarOpcoesClientes(Conta contaLogada) {
 		int opcao = 0;
 		do {
 			System.out.println("-".repeat(40));
@@ -157,7 +154,7 @@ public class Menu {
 		} while (opcao != 4);
 	}
 
-	public void movimentacoesContaCliente(Conta contaLogada) {
+	public static void movimentacoesContaCliente(Conta contaLogada) {
 		int opcao = 0;
 		do {
 			System.out.println("-".repeat(40));
@@ -215,15 +212,10 @@ public class Menu {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					finally {
-						break;
-					}
 				}
 				break;
 			case 5:
 				break;
-			
-				
 			default:
 				System.out.println("|❌ Opção Inválida, tente novamente!");
 				break;
@@ -232,7 +224,7 @@ public class Menu {
 		} while (opcao != 5);
 	}
 
-	public void relatoriosContaCliente(Conta contaLogada) {
+	public static void relatoriosContaCliente(Conta contaLogada) {
 		int escolha = 0;
 		do {
 			System.out.println("-".repeat(40));
@@ -242,11 +234,10 @@ public class Menu {
 
 			if (contaLogada.getTipo() == TipoConta.CONTA_CORRENTE) {
 				System.out.println("|-> 2. Relatório de Tributações.");
-				
-
 			} else {
 				System.out.println("|-> 2. Relatório de Rendimentos.");
 			}
+			
 			System.out.println("|-> 3. Voltar ao Menu principal.");
 			System.out.println("+");
 			System.out.print("| Digite uma opção: ");
@@ -267,10 +258,8 @@ public class Menu {
 						EscreverArquivos.gerarRelatorioTaxas(contaLogada);
 						System.out.println("| ✔ Arquivo gerado com sucesso! ");
 					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					finally {
-						break;
+						System.out.println("| ❌ Não foi possivel gerar o arquivo.");
+						System.out.println("| Erro:" + e.getMessage());
 					}
 				}
 				break;
@@ -299,74 +288,130 @@ public class Menu {
 		} while (escolha != 3);
 	}
 
-	public void mostrarOpcoesFuncionarios(Funcionario funcionarioLogado) {
+	public static void mostrarOpcoesFuncionarios(Funcionario funcionarioLogado) {
 		int escolha = 0;
 		boolean sair = false;
 		do {
 		System.out.println("-".repeat(40));
 		System.out.println("\t   MENU ADMINISTRATIVO");
 		System.out.println("-".repeat(40));
+		System.out.println("Olá, " + funcionarioLogado.getNome() + " bem-vindo(a)!");
 		switch (funcionarioLogado.getTipo()) {
-		case GERENTE:
-			System.out.println("|-> 1. Relatório Contas da Agencia");
-			System.out.println("|-> 2. Sair");
-			System.out.println("| Digite uma opção: ");
-			escolha = sc.nextInt();
-			if (escolha == 1) {
-				((Gerente) (funcionarioLogado)).gerarRelatorioNumeroContas();
-			}
-			else {
-				sair = true;
-			}
+			case GERENTE:
+				System.out.println("|-> 1. Cadastrar Cliente");
+				System.out.println("|-> 2. Relatório Contas da Agencia");
+				System.out.println("|-> 3. Sair");
+				System.out.print("| Digite uma opção: ");
+				escolha = sc.nextInt();
+				
+				switch (escolha) {
+				case 1:
+					System.out.println("+- CADASTRO -+");
+					((Gerente) (funcionarioLogado)).cadastrarCliente();
+					break;
+				case 2:
+					System.out.println("+- RELATORIO NÚMERO DE CONTAS -+");
+					((Gerente) (funcionarioLogado)).gerarRelatorioNumeroContas();
+					break;
+				case 3:
+					sair = true;
+					break;
+				default:
+					break;
+				}
+				
 			break;
-		case DIRETOR:
-			System.out.println("|-> 1. Relatório Contas da Agencia");
-			System.out.println("|-> 2. Relatório Geral de Contas");
-			System.out.println("|-> 3. Sair");
-			System.out.print("| Digite uma opção: ");
-			escolha = sc.nextInt();
-			if (escolha == 1) {
-				System.out.println("|-> Escolha o número da agencia");
-				System.out.println("Num. Agencias: " + Banco.getListaAgencias().keySet());
-				System.out.print("| Digite o número de uma agencia: ");
-				int numAgencia = sc.nextInt();
-				((Gerente) (funcionarioLogado)).setNumeroAgencia(numAgencia);
-				((Gerente) (funcionarioLogado)).gerarRelatorioNumeroContas();
-
-			} else if (escolha == 2) {
-				((Diretor) (funcionarioLogado)).gerarRelatorioInfoClientes();
-			}
-			else {
-				sair = true;
-			}
+			case DIRETOR:
+				System.out.println("|-> 1. Relatório Contas da Agencia");
+				System.out.println("|-> 2. Relatório Geral de Contas");
+				System.out.println("|-> 3. Sair");
+				System.out.print("| Digite uma opção: ");
+				escolha = sc.nextInt();
+				switch (escolha) {
+				case 1:
+					System.out.println("|-> Escolha o número da agencia");
+					System.out.println("Num. Agencias: " + Banco.getListaAgencias().keySet());
+					System.out.print("| Digite o número de uma agencia: ");
+					int numAgencia = sc.nextInt();
+					((Gerente) (funcionarioLogado)).setNumeroAgencia(numAgencia);
+					((Gerente) (funcionarioLogado)).gerarRelatorioNumeroContas();
+				break;
+				case 2:
+					((Diretor) (funcionarioLogado)).gerarRelatorioInfoClientes();
+					
+					System.out.println("|-> Deseja salvar esse extrato? (y/n) ");
+					System.out.print("| Sua escolha: ");
+					String escolha2 = sc.next();
+					
+					if(escolha2.equalsIgnoreCase("y")) {
+						try {
+							EscreverArquivos.gerarRelatorioClientesDiretor();
+							System.out.println("| ✔ Arquivo gerado com sucesso! ");
+						} catch (IOException e) {
+							System.out.println("| ❌ Não foi possivel gerar o arquivo.");
+							System.out.println("| Erro:" + e.getMessage());
+							e.printStackTrace();
+						}
+					}
+				break;
+				case 3:
+					sair = true;
+				break;
+				default:
+					System.out.println("| ❌ Opção Inválida, Tente novamente!");
+				break;
+				}
 			break;
-		case PRESIDENTE:
-			System.out.println("|-> 1. Relatório Contas da Agencia");
-			System.out.println("|-> 2. Relatório Geral de Contas");
-			System.out.println("|-> 3. Relatório Saldo Total do Banco");
-			System.out.println("|-> 4. Sair");
-			System.out.print("| Digite uma opção: ");
-			escolha = sc.nextInt();
-			switch (escolha) {
-			case 1:
-				System.out.println("|-> Escolha o número da agencia");
-				System.out.println("Num. Agencias: " + Banco.getListaAgencias().keySet());
-				System.out.print("| Digite o número de uma agencia: ");
-				int numAgencia = sc.nextInt();
-				((Gerente) (funcionarioLogado)).setNumeroAgencia(numAgencia);
-				((Gerente) (funcionarioLogado)).gerarRelatorioNumeroContas();
+			case PRESIDENTE:
+				System.out.println("|-> 1. Relatório Contas da Agencia");
+				System.out.println("|-> 2. Relatório Geral de Contas");
+				System.out.println("|-> 3. Relatório Saldo Total do Banco");
+				System.out.println("|-> 4. Cadastrar Nova Agencia.");
+				System.out.println("|-> 5. Sair");
+				System.out.print("| Digite uma opção: ");
+				escolha = sc.nextInt();
+				switch (escolha) {
+				case 1:
+					System.out.println("|-> Escolha o número da agencia");
+					System.out.println("Num. Agencias: " + Banco.getListaAgencias().keySet());
+					System.out.print("| Digite o número de uma agencia: ");
+					int numAgencia = sc.nextInt();
+					((Gerente) (funcionarioLogado)).setNumeroAgencia(numAgencia);
+					((Gerente) (funcionarioLogado)).gerarRelatorioNumeroContas();
+					
 				break;
-			case 2:
-				((Diretor) (funcionarioLogado)).gerarRelatorioInfoClientes();
+				case 2:
+					((Diretor) (funcionarioLogado)).gerarRelatorioInfoClientes();
+					
+					System.out.println("|-> Deseja salvar esse extrato? (y/n) ");
+					System.out.print("| Sua escolha: ");
+					String escolha2 = sc.next();
+					
+					if(escolha2.equalsIgnoreCase("y")) {
+						try {
+							EscreverArquivos.gerarRelatorioClientesDiretor();
+							System.out.println("| ✔ Arquivo gerado com sucesso! ");
+						} catch (IOException e) {
+							System.out.println("| ❌ Não foi possivel gerar o arquivo.");
+							System.out.println("| Erro:" + e.getMessage());
+							e.printStackTrace();
+						}
+					}
 				break;
-			case 3:
-				((Presidente) (funcionarioLogado)).gerarRelatorioCapitalTotal();
-			case 4:
-				sair = true;
+				case 3:
+					((Presidente) (funcionarioLogado)).gerarRelatorioCapitalTotal();
+				break;
+				case 4:
+					((Presidente) (funcionarioLogado)).cadastrarAgencia();
+				break;
+				case 5:
+					sair = true;
+				break;
+				default:
+				break;}
 			break;
 			default:
 				break;
-			}
 		}
 	}while(sair != true);
 	}

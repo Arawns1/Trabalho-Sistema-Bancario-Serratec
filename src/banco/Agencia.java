@@ -10,22 +10,25 @@ public class Agencia {
 	private int numero;
 	private Gerente gerente;
 	private List<Conta> contas = new ArrayList<Conta>();
-
+	
 	public Agencia(int numero, Gerente gerente) {
 		super();
 		this.numero = numero;
 		this.gerente = gerente;
-		Banco.addNovaAgencia(this);
+	}
+	
+	public Agencia(Gerente gerente) {
+		super();
+		this.numero = Banco.getContadorAgencia();
+		this.gerente = gerente;
 	}
 	
 	public void addNovaConta(Conta conta) {
 		contas.add(conta);
-
 	}
 
 	public int getNumContas() {
 		return contas.size();
-
 	}
 
 	public int getNumero() {
@@ -54,7 +57,7 @@ public class Agencia {
 
 	@Override
 	public String toString() {
-		return "Agencia [numero=" + numero + ", gerente=" + gerente +"]";
+		return "Agencia," + numero + "," + gerente;
 	}
 
 }

@@ -1,0 +1,4 @@
+ Nome | CPF | NumAgencia | Gerente
+Ilson,1234,0,Elson
+Kelson,4321,1,Pedro
+

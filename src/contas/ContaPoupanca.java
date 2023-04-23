@@ -19,7 +19,7 @@ public class ContaPoupanca extends Conta{
 	}
 	@Override
 	public String toString() {
-		return "ContaPoupanca [numero=" + numero + ", titular=" + titular +", NumeroAgencia=" + this.getAgencia().getNumero() +  ", saldo=" + saldo + "]";
+		return "ContaPoupanca," + numero + "," + titular +"," + this.getAgencia().getNumero() +  "," + saldo;
 	}
 	
 }

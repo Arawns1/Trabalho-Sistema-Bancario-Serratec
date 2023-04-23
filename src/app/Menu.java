@@ -48,15 +48,23 @@ public class Menu {
 			System.out.println("|-> 1. Clientes");
 			System.out.println("|-> 2. Painel Administrativo");
 			System.out.print("| Digite uma Opção: ");
-
-			escolha = sc.nextInt();
-			if (escolha == 1) {
-				fazerLoginCliente();
-			} else if (escolha == 2) {
-				fazerLoginAdministrativo();
-			} else {
-				System.out.println("|❌ Opção Inválida, tente novamente!");
+			try {
+				
+				escolha = sc.nextInt();
+				if (escolha == 1) {
+					fazerLoginCliente();
+				} else if (escolha == 2) {
+					fazerLoginAdministrativo();
+				} else {
+					System.out.println("|❌ Opção Inválida, tente novamente!");
+				}
+				
+			} catch (Exception e) {
+				System.out.println("Teste erro 2");
+				break;
+				// TODO: handle exception
 			}
+			
 			System.out.println("=".repeat(40));
 			System.out.println(" Obrigado por utilizar nossos serviços!");
 			System.out.println("\t\tG5 BANK ©");
@@ -76,6 +84,8 @@ public class Menu {
 		System.out.println("\t    LOGIN CLIENTES");
 		System.out.println("-".repeat(40));
 		// Pegando dados do Cliente
+		
+		try {
 		System.out.println("FAÇA LOGIN ");
 		System.out.println("|-> Digite seu CPF (apenas números) ");
 		System.out.print("| CPF: ");
@@ -83,21 +93,37 @@ public class Menu {
 		System.out.println("|-> Digite sua Senha: ");
 		System.out.print("| Senha: ");
 		int senha = sc.nextInt();
-
-		// Verificando na listaCliente se ela contém o CPF e se a Senha digitada está
-		// correta.
-		if (Banco.getListaCliente().containsKey(cpf)) {
-			if (Banco.getListaCliente().get(cpf).getTitular().getSenha() == senha) {
-				mostrarOpcoesClientes(Banco.getListaCliente().get(cpf));
+		
+		try {
+			
+			// Verificando na listaCliente se ela contém o CPF e se a Senha digitada está
+			// correta.
+			if (Banco.getListaCliente().containsKey(cpf)) {
+				if (Banco.getListaCliente().get(cpf).getTitular().getSenha() == senha) {
+					mostrarOpcoesClientes(Banco.getListaCliente().get(cpf));
+				} else {
+					System.out.println("|⚠ Senha incorreta, tente novamente!");
+				}
 			} else {
-				System.out.println("|⚠ Senha incorreta, tente novamente!");
+				System.out.println("|⚠ CPF não identificado");
 			}
-		} else {
-			System.out.println("|⚠ CPF não identificado");
+			
+		} catch (Exception e) {
+			System.out.println("Erro teste");
 		}
+		
+				
+		}catch(Exception e ) {
+			System.out.println("| Digite um valor válido!");
+			System.out.println("| CPF e SENHA deve ser numéricos ");
+			
+		}
+		
+
+
 	}
 
-	public void fazerLoginAdministrativo() {
+		public void fazerLoginAdministrativo() {
 		System.out.println("-".repeat(40));
 		System.out.println("\t  LOGIN ADMINISTRATIVO");
 		System.out.println("-".repeat(40));

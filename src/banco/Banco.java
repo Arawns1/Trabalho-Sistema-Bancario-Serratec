@@ -1,14 +1,6 @@
 package banco;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
 import contas.Conta;
 import pessoas.funcionarios.Funcionario;
 import pessoas.funcionarios.Presidente;
@@ -16,9 +8,9 @@ import pessoas.funcionarios.Presidente;
 public abstract class Banco {
 	private static String nome;
 	private static Presidente presidente;
-	private static HashMap<String, Conta> listaCliente = new HashMap<String, Conta>();
-	private static HashMap<String, Funcionario> listaFuncionarios = new HashMap<String, Funcionario>();
-	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<Integer, Agencia>();
+	private static HashMap<String, Conta> listaCliente = new HashMap<>();
+	private static HashMap<String, Funcionario> listaFuncionarios = new HashMap<>();
+	private static HashMap<Integer, Agencia> listaAgencias = new HashMap<>();
 	private static double saldoTotal;
 	private static int contadorAgencia = 0;
 

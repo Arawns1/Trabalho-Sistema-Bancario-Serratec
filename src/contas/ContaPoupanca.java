@@ -11,7 +11,7 @@ public class ContaPoupanca extends Conta{
 		this.tipo = TipoConta.CONTA_POUPANCA;
 	}
 
-	public final double TAXA_RENDIMENTO = 0.001;
+	public static final double TAXA_RENDIMENTO = 0.001;
 	public void simularRendimento(double valorSimulado, int dias) {
 		double montante = valorSimulado * Math.pow((1 + TAXA_RENDIMENTO), dias);
 		System.out.println("| O valor após " + dias + " dias será de R$" + String.format("%.2f", montante));

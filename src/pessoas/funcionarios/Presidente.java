@@ -38,7 +38,7 @@ public class Presidente extends Diretor {
 			}
 		}
 		Banco.setSaldoTotal(saldoTotal);
-		System.out.println("| O saldo total do banco é: R$" + String.format("%.2f", saldoTotal));;
+		System.out.println("| O saldo total do banco é: R$" + String.format("%.2f", saldoTotal));
 	}
 
 	@Override

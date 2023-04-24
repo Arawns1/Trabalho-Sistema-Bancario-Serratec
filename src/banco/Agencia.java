@@ -9,7 +9,7 @@ public class Agencia {
 
 	private int numero;
 	private Gerente gerente;
-	private List<Conta> contas = new ArrayList<Conta>();
+	private List<Conta> contas = new ArrayList<>();
 	
 	public Agencia(int numero, Gerente gerente) {
 		super();

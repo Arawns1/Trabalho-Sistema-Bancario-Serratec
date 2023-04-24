@@ -6,9 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
 import banco.Agencia;
-import banco.Banco;
 import banco.TipoConta;
 import banco.utils.EscreverArquivos;
 import pessoas.Pessoa;
@@ -78,7 +76,7 @@ public abstract class Conta {
 
 	public void tirarExtrato() {
 		System.out.println("-".repeat(40));
-		System.out.println("\t\tEXTRATO");
+		System.out.println("\t\t    EXTRATO");
 		System.out.println("" + "-".repeat(39));
 		System.out.println("Número da conta: " + this.getNumero() + "\t      Agencia: " + this.getAgencia().getNumero());
 		System.out.println("Gerado em: " + LocalDateTime.now().format(dtf));

@@ -2,9 +2,9 @@ ContaCorrente,4566,Guilherme,7890,991,0,10000.0
 ContaCorrente,9127,Belson,2,234,1,39813.2
 ContaPoupanca,4568,Mateus,9012,4590,0,4000.0
 ContaPoupanca,9012,Carlos,8765,3213,1,2500.0
-ContaCorrente,1234,Vilson,1234,1234,0,399.79999999999995
+ContaCorrente,1234,Vilson,1234,1234,0,360.2999999999999
 ContaPoupanca,1235,Júlia,2345,5473,1,800.0
 ContaCorrente,5679,Pedro,3456,5261,1,14829.8
-ContaCorrente,2313,Elson,4321,4321,0,2563.7200000000003
+ContaCorrente,2313,Elson,4321,4321,0,2604.7200000000003
 ContaCorrente,6788,Victor,5678,5616,1,3000.0
 ContaPoupanca,9013,Fernanda,6789,5213,1,3480.0

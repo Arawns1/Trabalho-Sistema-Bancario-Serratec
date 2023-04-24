@@ -8,16 +8,14 @@ public abstract class Pessoa {
 	protected int senha;
 	protected Cargo tipo;
 
-	
-	
-	public Pessoa(String nome, String cpf, int senha, Cargo tipo) {
+	protected Pessoa(String nome, String cpf, int senha, Cargo tipo) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
 		this.tipo = tipo;
 	}
-	public Pessoa(String nome, String cpf, int senha) {
+	protected Pessoa(String nome, String cpf, int senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -56,13 +54,6 @@ public abstract class Pessoa {
 	public void setTipo(Cargo tipo) {
 		this.tipo = tipo;
 	}
-
-	// public Cargos getTipo() {
-	// return this.tipo;
-	// }
-	// public void setCargos(Cargos tipo) {
-	// this.tipo = tipo;
-	// }
 
 	@Override
 	public String toString() {

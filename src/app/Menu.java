@@ -340,10 +340,10 @@ public class Menu {
 					}
 					
 				} else {
-					System.out.println("|-> Digite um valor para ser simulado ");
+					System.out.println("|-> Digite um valor para ser simulado: ");
 					System.out.print("| Valor: R$ ");
 					double valor = sc.nextDouble();
-					System.out.println("|-> Digite a quantidade de dias que deseja deixa esse dinheiro render ");
+					System.out.println("|-> Digite a quantidade de dias que deseja deixa esse dinheiro render: ");
 					System.out.print("| Quantidade dias: ");
 					int dias = sc.nextInt();
 					System.out.println("+");

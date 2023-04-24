@@ -38,11 +38,11 @@ public class ContaCorrente extends Conta {
 			try {
 				EscreverArquivos.listaTransacoes(contaDestino);
 			} catch (IOException e) {
-				System.out.println("| ❌ Não foi possível gerar o extrato da conta destino");
+				System.out.println("| ❌ Não foi possível gerar o extrato da conta destino!");
 			}
-			System.out.println("| ✔ Trasferência realizada com sucesso");
+			System.out.println("| ✔ Trasferência realizada com sucesso!");
 		} else {
-			System.out.println("| ❌ Saldo insuficiente para realizar a operação");
+			System.out.println("| ❌ Saldo insuficiente para realizar a operação!");
 		}
 	}
 
@@ -54,9 +54,9 @@ public class ContaCorrente extends Conta {
 			this.saldo -= TAXA_DEPOSITO;
 			totalTaxaDeposito += TAXA_DEPOSITO;
 			transacoes.add(momentoOperacao.format(dtf) + " Depositou R$" + valor);
-			System.out.println("| ✔ Seu deposito foi realizado com sucesso");
+			System.out.println("| ✔ Seu deposito foi realizado com sucesso!");
 		} else {
-			System.out.println("| ❌ Não foi possivel realizar o deposito");
+			System.out.println("| ❌ Não foi possivel realizar o deposito!");
 		}
 	}
 
@@ -67,10 +67,10 @@ public class ContaCorrente extends Conta {
 			totalTaxaSaque += TAXA_SAQUE;
 			momentoOperacao = LocalDateTime.now();
 			transacoes.add(momentoOperacao.format(dtf) + " Sacou R$" + valor);
-			System.out.println("| ✔ Seu saque foi realizado com sucesso");
+			System.out.println("| ✔ Seu saque foi realizado com sucesso!");
 
 		} else {
-			System.out.println("| ❌ Não foi possivel realizar o saque");
+			System.out.println("| ❌ Não foi possivel realizar o saque!");
 		}
 	}
 

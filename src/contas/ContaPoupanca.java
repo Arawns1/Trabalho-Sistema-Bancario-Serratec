@@ -15,7 +15,7 @@ public class ContaPoupanca extends Conta{
 	public void simularRendimento(double valorSimulado, int dias) {
 		double montante = valorSimulado * Math.pow((1 + TAXA_RENDIMENTO), dias);
 		System.out.println("| O valor após " + dias + " dias será de R$" + String.format("%.2f", montante));
-		System.out.println("| Os juros totais setão de R$" + String.format("%.2f", (montante - valorSimulado)) );
+		System.out.println("| Os juros totais serão de R$" + String.format("%.2f", (montante - valorSimulado)) );
 	}
 	@Override
 	public String toString() {

@@ -45,8 +45,8 @@ Utilizamos de Classes abstratas, herança, polimorfismo, encapsulamento, leitura
 
 
 ## 🔗 Alguns Links
-- <a href=""/> > Diagramas <a/>
-- <a href=""/> > Relatorios e arquivos gerados pelo programa</a>
+- <a href="https://github.com/Arawns1/Trabalho-Sistema-Bancario-Serratec/tree/main/Diagramas"/> > Diagramas <a/>
+- <a href="https://github.com/Arawns1/Trabalho-Sistema-Bancario-Serratec/tree/main/Relatorios"/> > Relatorios e arquivos gerados pelo programa</a>
 
 <hr/>
 <div align="center">

@@ -49,10 +49,10 @@ Utilizamos de Classes abstratas, herança, polimorfismo, encapsulamento, leitura
 - <a href="https://github.com/Arawns1/Trabalho-Sistema-Bancario-Serratec/tree/main/Relatorios"/> > Relatorios e arquivos gerados pelo programa</a>
 
 <hr/>
-<div align="center">
+<div align="center"> 
 
 <img width ="400" src ="https://cdn.discordapp.com/attachments/1090076539602866176/1090353059290419340/326727009_876691460048247_1561125399909609359_n-removebg-preview-removebg-preview.png"/>
 &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <img width="100" src="https://user-images.githubusercontent.com/62900084/233850829-fc24336b-23f1-41ac-83ef-e32f9b3276ad.jpg"/>
 
-</div>
+</div> 

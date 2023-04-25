@@ -1,0 +1,5 @@
+Total gasto com taxas de saque: R$0,10
+Total gasto com taxas de depósito: R$0,00
+Total gasto com taxas de transferência: R$0,00
+O somatório total das taxas: R$0,10
+O valor do seu seguro é: 100.0

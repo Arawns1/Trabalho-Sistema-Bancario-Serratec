@@ -129,7 +129,7 @@ public class Menu {
 			}
 			else {
 				System.out.println("| ⚠ Digite um valor válido!");
-				System.out.println("| ⚠ CPF e SENHA deve ser numéricos ");
+				System.out.println("| ⚠ CPF e SENHA devem ser numéricos ");
 				sc.next();
 			}
 	}

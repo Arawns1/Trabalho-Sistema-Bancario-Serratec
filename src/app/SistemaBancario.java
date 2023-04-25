@@ -8,5 +8,4 @@ public class SistemaBancario {
 		Banco.setNome("G5 bank");
 		Menu.Login();
 	}
-
 }

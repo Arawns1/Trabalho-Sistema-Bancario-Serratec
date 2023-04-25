@@ -77,8 +77,4 @@ public class EscreverArquivos {
 		buffWrite.close();
 	}
 
-	public static void gerarRelatorioPoupanca() {
-		
-	}
-
 }
